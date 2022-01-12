@@ -1,34 +1,46 @@
 1) add_remove_elements
 
+
 //div[@id='content']//following-sibling::h3
 
-2)  нопка 'Add Element'
+
+2) Button 'Add Element'
 
 //button[@onclick]
 //button[@onclick='addElement()']
 //div[@id='content']//following-sibling::button[@onclick='addElement()']
 //div[@id='content']//following-sibling::button
 
-3)  нопка 'Delete' (по€вл€етс€ после клика на Add Element)
+
+3) Button 'Delete' (appears after click on Add Element)
+
 
 //button[@class']
 
-4) Ёлемент ссылки в футере сайта
+
+4) An element of reference in the page footer.
+
 
 //div[@id='page-footer']//div//a
 
-5) Ёлемент заголовка страницы
+
+5) An element of main header of the page
+
 
 //div[@class='example']//h3
+
 
 6)
 
 7)
 
-8) Ёлемент €чейки, котора€ содержит им€ "John" из таблицы 2
+8) An element of the cell, contained name John in the table 2.
+
 
 //table[@id='table2']//th//span[text()='First Name']/following::td[2]
 
-9) Ёлемент со значением веб сайта дл€ человека  с фамилией "Doe" и именем "Jason" из таблицы 1
 
-//table[@id='table1']//*[contains(text(), 'Jason')]//following::td
+9) An element of the cell, contained web-site of Jason Doe in the table 1.
+
+
+//table[@id='table1']//*[contains(text(), 'Jason')]//following::td[3]
