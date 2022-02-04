@@ -24,11 +24,8 @@ public class Driver {
     public static WebDriver getInstance() {
         try {
             if (driver == null) {
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("incognito");
-                driver = new ChromeDriver(options);
-                driver.manage().timeouts().implicitlyWait(20, TimeUnit.NANOSECONDS);
+                driver = BrowserFactory.getBrowser("Chrome");
+                //driver.manage().timeouts().implicitlyWait(20, TimeUnit.NANOSECONDS);
             }
 
         } catch (WebDriverException e) {
