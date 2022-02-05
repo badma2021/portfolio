@@ -38,6 +38,9 @@ public class Testing {
         Assert.assertTrue((ap.getTextFieldAlertsPage()), "Verification Failed: Alerts page is not open");
 
         //Шаг3 Нажать на кнопку Click Button to see alert
+        ap.clickToSeeAlertButton();
+        System.out.println(ap.getAlerts());
+        System.out.println(ap.APgetAlertsText());
 
 
     }

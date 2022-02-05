@@ -1,4 +1,5 @@
 {
-  "base_Url" : "https://demoqa.com/"
+  "base_Url" : "https://demoqa.com/",
+  "timeout" : "20"
 
 }
