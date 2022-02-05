@@ -12,6 +12,8 @@ public class Testing {
     ConfigReader cf = new ConfigReader();
 
     HomePage hp = new HomePage(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), "Home page of DemoQA");
+    AlertsFrameWindowsPage afwp = new AlertsFrameWindowsPage(new TextField(By.xpath("//div[@class='main-header']"), "Main header of Alerts&Frame&Windows page"), "Alerts&Frame&Windows page");
+    AlertsPage ap = new AlertsPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), "Main header of Alerts page of DemoQA"), "Alerts page of DemoQA");
 
     @BeforeTest
     public void setUp() throws IOException {
@@ -31,7 +33,13 @@ public class Testing {
         //Шаг2 Кликнуть на кнопку Alerts, Frame & Windows.
         //На открывшейся странице в левом меню кликнуть пункт Alerts
         hp.clickTextFieldAlertsFrameWindows();
-        //Assert.assertTrue((ap.getAboutPageTitle()), "Verification Failed:Steam About page is not open");
+        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: AlertsFrameWindowsPage page is not open");
+        afwp.clickMenuAlerts();
+        Assert.assertTrue((ap.getTextFieldAlertsPage()), "Verification Failed: Alerts page is not open");
+
+        //Шаг3 Нажать на кнопку Click Button to see alert
+
+
     }
 
 
