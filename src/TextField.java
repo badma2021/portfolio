@@ -1,13 +1,15 @@
 import org.openqa.selenium.By;
 
 public class TextField extends BaseElement {
+
     TextField(By locator, String name) {
         super(locator, name);
+
     }
 
     @Override
-    void isDisplayed() {
-        super.isDisplayed();
+    boolean isDisplayed() {
+       return Driver.getInstance().findElement(locator).isDisplayed();
     }
 
     @Override

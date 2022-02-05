@@ -24,13 +24,13 @@ public class Testing {
     @Test(description = "Test1", enabled = true)
     public void Alerts() throws IOException {
 
-//Шаг1 Перейти на главную страницу
+        //Шаг1 Перейти на главную страницу
         Driver.getInstance().get(cf.util().getString("base_Url"));
-        //Assert.assertTrue((hp.getElementHomepage()), "Home page is not open");
+        Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
 
         //Шаг2 Кликнуть на кнопку Alerts, Frame & Windows.
         //На открывшейся странице в левом меню кликнуть пункт Alerts
-        hp.textFieldAlertsFrameWindowsClick();
+        hp.clickTextFieldAlertsFrameWindows();
         //Assert.assertTrue((ap.getAboutPageTitle()), "Verification Failed:Steam About page is not open");
     }
 
