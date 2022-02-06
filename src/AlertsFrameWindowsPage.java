@@ -20,4 +20,8 @@ public class AlertsFrameWindowsPage extends BaseForm{
     public void clickMenuAlerts(){
         MenuForm.clickMenuAlerts();
     }
+    public void clickMenuNestedFrames(){
+        MenuForm.clickMenuNestedFrames();
+    }
+
 }

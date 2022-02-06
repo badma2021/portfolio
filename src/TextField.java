@@ -19,7 +19,7 @@ public class TextField extends BaseElement {
     }
 
     @Override
-    void getText() {
-        super.getText();
+    String getText() {
+      return  Driver.getInstance().findElement(locator).getText();
     }
 }

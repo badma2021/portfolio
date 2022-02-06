@@ -20,5 +20,8 @@ public class Alerts {
         Driver.getInstance().switchTo().alert().accept();
     }
 
+    public void sendText(String text) {
+        Driver.getInstance().switchTo().alert().sendKeys(text);
+    }
 
 }

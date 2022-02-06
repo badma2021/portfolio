@@ -1,6 +1,4 @@
 import org.openqa.selenium.By;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
 public class Button extends BaseElement{
 
@@ -21,7 +19,8 @@ public class Button extends BaseElement{
     }
 
     @Override
-    void getText() {
+    String getText() {
         super.getText();
+        return null;
     }
 }

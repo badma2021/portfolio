@@ -22,6 +22,7 @@ public abstract class BaseElement {
 
     }
 
-    void getText() {
+    String getText() {
+        return null;
     }
 }
