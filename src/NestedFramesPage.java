@@ -35,10 +35,15 @@ public class NestedFramesPage extends BaseForm {
         String p = Driver.getInstance().findElement(By.xpath("/html/body")).getText();
         Driver.getInstance().switchTo().frame(0);
         String c = Driver.getInstance().findElement(By.xpath("/html/body/p")).getText();
-        System.out.println(p + " " + c);
+        Driver.getInstance().switchTo().defaultContent();
+        //System.out.println(p + " " + c);
         return (p + " " + c);
 
 
+    }
+
+    public void clickMenuFrames(){
+        MenuForm.clickMenuFrames();
     }
 
 }

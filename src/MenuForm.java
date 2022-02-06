@@ -7,6 +7,7 @@ public class MenuForm extends BaseForm {
     public static String locatorMenuAlerts = "//*[@id='item-1']/span[contains(text(),'Alerts')]";
     public static String locatorMovetoMenuAlerts = "//*[@id='item-3']/span[contains(text(),'Nested')]";
     private static String locatorMovetoMenuNestedFrames=".//*[text()='Widgets']";
+    private static String locatorMovetoMenuFrames="//*[@id='item-2']/span[contains(text(),'Frames')]";
 
     protected MenuForm(BaseElement uniqueElement, String name) {
 
@@ -15,7 +16,7 @@ public class MenuForm extends BaseForm {
 
     static TextField tFMenuAlerts = new TextField(By.xpath(locatorMenuAlerts), "Textfield Alerts on the menu");
     static TextField tFMenuNestedFrames = new TextField(By.xpath(locatorMovetoMenuAlerts), "Textfield Nested Frames on the menu");
-
+    static TextField tFMenuFrames = new TextField(By.xpath(locatorMovetoMenuFrames), "Textfield Frames on the menu");
 
     public static void clickMenuAlerts() {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuAlerts));
@@ -29,5 +30,11 @@ public class MenuForm extends BaseForm {
         Actions builder = new Actions(Driver.getInstance());
         builder.moveToElement(element).build().perform();
         tFMenuNestedFrames.click();
+    }
+    public static void clickMenuFrames() {
+        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuNestedFrames));
+        Actions builder = new Actions(Driver.getInstance());
+        builder.moveToElement(element).build().perform();
+        tFMenuFrames.click();
     }
 }

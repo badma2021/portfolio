@@ -90,7 +90,7 @@ public class Testing {
         Assert.assertTrue(nf.getIframeText().equals(nf.labelIframeInternalText), "Verification Failed: There are no 'Parent frame' and 'Child Frame' labels inside Iframes");
 
         //Шаг3 В левом меню выбрать пункт Frames.
-
+        nf.clickMenuFrames();
 
     }
 
