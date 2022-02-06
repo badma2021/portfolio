@@ -15,8 +15,9 @@ public class Alerts {
 
     public String getAlertText() {
         return Driver.getInstance().switchTo().alert().getText();
-
-
+    }
+    public void acceptAlert() {
+        Driver.getInstance().switchTo().alert().accept();
     }
 
 

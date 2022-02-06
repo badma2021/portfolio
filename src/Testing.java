@@ -39,13 +39,22 @@ public class Testing {
 
         //Шаг3 Нажать на кнопку Click Button to see alert
         ap.clickToSeeAlertButton();
-        System.out.println(ap.getAlerts());
-        System.out.println(ap.APgetAlertsText());
+//        System.out.println(ap.getAlerts());
+//        System.out.println(ap.APgetAlertsText());
+        Assert.assertTrue(ap.APgetAlertsText().equals(ap.labelYouClickedButton), "Verification Failed: There is no any alert with label 'You clicked a button'");
 
+        //Шаг4 Нажать на кнопку OK
+        ap.APacceptAlert();
+        Assert.assertFalse((ap.getAlerts()), "Verification Failed: Alert still exists");
+
+        //Шаг5 Нажать на кнопку On button click, confirm box will appear
+         ap.clickConfirmBoxButton();
+        Assert.assertTrue(ap.APgetAlertsText().equals(ap.labelDoYouConfirmAction), "Verification Failed: There is no any alert with label 'Do you confirm action?'");
+        //System.out.println(ap.APgetAlertsText());
+        ap.APacceptAlert();
+        Assert.assertTrue((ap.getTextFieldYouSelectedOK()), "Verification Failed: No text appeared after pushing on confirm box");
 
     }
-
-
 //    @AfterTest
 //    public void tearDown() throws IOException {
 //        Driver.getInstance();
