@@ -1,6 +1,7 @@
 import configs.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -21,6 +22,8 @@ public class Testing {
     AlertsPage ap = new AlertsPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), "Main header of Alerts page of DemoQA"), "Alerts page of DemoQA");
     NestedFramesPage nf = new NestedFramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), "Main header of Nested Frames page of DemoQA"), "Nested Frame page of DemoQA");
     FramesPage fp = new FramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), "Main header of Frames page of DemoQA"), "Frame page of DemoQA");
+    ElementsPage ep = new ElementsPage(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of Elements page of DemoQA"), "Elements page of DemoQA");
+    WebTablesPage wtp = new WebTablesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), "Main header of Web Tables page of DemoQA"), "Web Tables page of DemoQA");
 
     @BeforeTest
     public void setUp() throws IOException {
@@ -94,7 +97,40 @@ public class Testing {
         nf.clickMenuFrames();
         Assert.assertTrue((fp.appearTextFieldFramesPage()), "Verification Failed: Nested Frames page is not open");
 
+//        WebElement element = Driver.getInstance().findElement(By.xpath(MenuForm.locatorMovetoMenuAlerts));
+//        Actions builder = new Actions(Driver.getInstance());
+//        builder.moveToElement(element).build().perform();
+//        WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath("//*[@id='frame1']")));
+//        Driver.getInstance().switchTo().frame(webIframe);
+//        System.out.println(Driver.getInstance().findElement(By.xpath("//*[@id='sampleHeading']")).getText());
+        //System.out.println(fp.getIframeText1FramesPage());
+        Assert.assertTrue(fp.getIframeText1FramesPage().equals(fp.getIframeText2FramesPage()), "Verification Failed: Internal text from two different Iframes is the same");
+//        Driver.getInstance().switchTo().frame(0);
+//        String c = iFChildNestedFramesPage.getText();
+//        Driver.getInstance().switchTo().defaultContent();
+//        WebElement webIframe2 = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath("//*[@id='frame2']")));
+//        Driver.getInstance().switchTo().frame(webIframe2);
+//        System.out.println(Driver.getInstance().findElement(By.xpath("//*[@id='sampleHeading']")).getText());
+//        Driver.getInstance().switchTo().defaultContent();
+        //System.out.println(p + " " + c);
+    }
 
+    @Test(description = "Test3", enabled = true)
+    public void Tables() throws IOException {
+        //Шаг1 Перейти на главную страницу
+        Driver.getInstance().get(cf.util().getString("base_Url"));
+        Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
+
+        //Шаг2 Кликнуть на кнопку Elements.
+        //На открывшейся странице в левом меню кликнуть пункт Web Tables
+        hp.clickTextFieldElements();
+        Assert.assertTrue((ep.getTextFieldElementsPage()), "Verification Failed: Elements page is not open");
+        ep.clickMenuWebTables();
+        Assert.assertTrue((wtp.appearTextFieldWebTablesPage()), "Verification Failed: Web tables page is not open");
+
+        //Шаг3 Кликнуть на кнопку Add.
+        wtp.clickAddButton();
+        //Assert.assertTrue((wtp.appearTextFieldNestedFramesPage()), "Verification Failed: Registration form did not appear");
     }
 
 

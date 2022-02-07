@@ -22,7 +22,7 @@ public class NestedFramesPage extends BaseForm {
     TextField tFNestedFramesPage = new TextField(By.xpath(locatorNestedFramesHeader), "Main header of Nested Frames page");
     TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");
     TextField iFChildNestedFramesPage = new TextField(By.xpath(locatorIframeChildText), "Child Iframe in Nested Frames page");
-
+//TextField maMovetoMenuAlerts=new TextField(By.xpath(MenuForm.locatorMovetoMenuAlerts), "Child Iframe in Nested Frames page");
     public boolean appearTextFieldNestedFramesPage() throws IOException {
         return tFNestedFramesPage.isDisplayed();
 

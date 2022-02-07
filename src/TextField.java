@@ -22,4 +22,8 @@ public class TextField extends BaseElement {
     String getText() {
       return  Driver.getInstance().findElement(locator).getText();
     }
+
+//    void switchTo(){
+//        Driver.getInstance().switchTo().frame(webIframe);
+//    }
 }
