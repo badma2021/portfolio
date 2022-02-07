@@ -20,6 +20,7 @@ public class Testing {
     AlertsFrameWindowsPage afwp = new AlertsFrameWindowsPage(new TextField(By.xpath("//div[@class='main-header']"), "Main header of Alerts&Frame&Windows page"), "Alerts&Frame&Windows page");
     AlertsPage ap = new AlertsPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), "Main header of Alerts page of DemoQA"), "Alerts page of DemoQA");
     NestedFramesPage nf = new NestedFramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), "Main header of Nested Frames page of DemoQA"), "Nested Frame page of DemoQA");
+    FramesPage fp = new FramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), "Main header of Frames page of DemoQA"), "Frame page of DemoQA");
 
     @BeforeTest
     public void setUp() throws IOException {
@@ -91,6 +92,8 @@ public class Testing {
 
         //Шаг3 В левом меню выбрать пункт Frames.
         nf.clickMenuFrames();
+        Assert.assertTrue((fp.appearTextFieldFramesPage()), "Verification Failed: Nested Frames page is not open");
+
 
     }
 

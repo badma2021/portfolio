@@ -16,10 +16,12 @@ public class NestedFramesPage extends BaseForm {
     private String locatorNestedFramesHeader = "//div[@class='main-header'][contains(text(),'Nested')]";
     public String locatorIframe = "//*[@id='frame1']";
     public String labelIframeInternalText = "Parent frame Child Iframe";
-
+    private String locatorIframeParentText = "/html/body";
+    private String locatorIframeChildText = "/html/body/p";
     Actions builder = new Actions(Driver.getInstance());
     TextField tFNestedFramesPage = new TextField(By.xpath(locatorNestedFramesHeader), "Main header of Nested Frames page");
-    //
+    TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");
+    TextField iFChildNestedFramesPage = new TextField(By.xpath(locatorIframeChildText), "Child Iframe in Nested Frames page");
 
     public boolean appearTextFieldNestedFramesPage() throws IOException {
         return tFNestedFramesPage.isDisplayed();
@@ -32,9 +34,9 @@ public class NestedFramesPage extends BaseForm {
         builder.moveToElement(element).build().perform();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe)));
         Driver.getInstance().switchTo().frame(webIframe);
-        String p = Driver.getInstance().findElement(By.xpath("/html/body")).getText();
+        String p = ifParentNestedFramesPage.getText();
         Driver.getInstance().switchTo().frame(0);
-        String c = Driver.getInstance().findElement(By.xpath("/html/body/p")).getText();
+        String c = iFChildNestedFramesPage.getText();
         Driver.getInstance().switchTo().defaultContent();
         //System.out.println(p + " " + c);
         return (p + " " + c);
