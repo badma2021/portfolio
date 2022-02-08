@@ -23,23 +23,19 @@ public class Testing_Data_provider {
         WebTablesPage wtp = new WebTablesPage("Web Tables page");
         BrowserWindows bw = new BrowserWindows("Browser Windows page");
         RegistrationForm rf = new RegistrationForm("Registration form");
-        //Шаг1 Перейти на главную страницу
+
         Driver.getInstance().manage().window().maximize();
-        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));
+        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
 
         Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
 
-        //Шаг2 Кликнуть на кнопку Elements.
-        //На открывшейся странице в левом меню кликнуть пункт Web Tables
-
-        hp.clickTextFieldElements();
+        hp.clickTextFieldElements();//Шаг2
         Assert.assertTrue((ep.getTextFieldElementsPage()), "Verification Failed: Elements page is not open");
         ep.clickMenuWebTables();
         Assert.assertTrue((wtp.appearTextFieldWebTablesPage()), "Verification Failed: Web tables page is not open");
 
-        //Шаг3 Кликнуть на кнопку Add.
 
-        wtp.clickAddButton();
+        wtp.clickAddButton();//Шаг3
        // Assert.assertTrue((wtp.appearTextFieldRegistrationFormOnWebTablesPage()), "Verification Failed: Registration form did not appear");
 
         rf.getFInputFirstName(FirstName);

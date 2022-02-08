@@ -76,8 +76,6 @@ public class AlertsPage extends BaseForm {
     }
 
     public void APacceptAlert() throws IOException {
-        // WaitUtils.getInstance().until(ExpectedConditions.alertIsPresent());
-
         alert.acceptAlert();
 
     }
