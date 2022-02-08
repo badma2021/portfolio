@@ -3,18 +3,18 @@ import org.openqa.selenium.By;
 public class Button extends BaseElement{
 
 
-    protected Button(By locator, String name) {
-        super(locator, name);
+    protected Button(By element, String name) {
+        super(element, name);
     }
 
     @Override
     boolean isDisplayed() {
-        return Driver.getInstance().findElement(locator).isDisplayed();
+        return Driver.getInstance().findElement(element).isDisplayed();
     }
 
     @Override
     void click() {
-        Driver.getInstance().findElement(locator).click();
+        Driver.getInstance().findElement(element).click();
 
     }
 

@@ -9,8 +9,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 
 public class NestedFramesPage extends BaseForm {
 
-    protected NestedFramesPage(BaseElement uniqueElement, String name) {
-        super(uniqueElement, name);
+    public NestedFramesPage(String name) {
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), name), name);
     }
 
     private String locatorNestedFramesHeader = "//div[@class='main-header'][contains(text(),'Nested')]";

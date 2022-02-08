@@ -14,8 +14,9 @@ public class FramesPage extends BaseForm {
     private String locatorIframe2TextField = "//*[@id='frame2']";
 
 
-    protected FramesPage(BaseElement uniqueElement, String name) {
-        super(uniqueElement, name);
+    protected FramesPage(String name) {
+
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), name), name);
     }
 
     Actions builder = new Actions(Driver.getInstance());

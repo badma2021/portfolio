@@ -4,17 +4,19 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.io.IOException;
 
-public class WebTablesPage extends BaseForm{
+public class WebTablesPage extends BaseForm {
 
 
     private String locatorWebTablesHeader = "//div[@class='main-header'][contains(text(),'Tables')]";
     private String locatorAddButton = "//*[@id='addNewRecordButton']";
 
 
-    protected WebTablesPage(BaseElement uniqueElement, String name) {
-        super(uniqueElement, name);
+    protected WebTablesPage(String name) {
+
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), name), name);
     }
 
+    RegistrationForm rf = new RegistrationForm(new TextField(By.xpath("//*[@id='registration-form-modal']"), "Main header of Registration form appeared on Web Tables page of DemoQA"), "Registration form appeared on Web Tables page of DemoQA");
     Actions builder = new Actions(Driver.getInstance());
     TextField tFWebTablesPage = new TextField(By.xpath(locatorWebTablesHeader), "Main header of Web Tables page");
     Button btAdd = new Button(By.xpath(locatorAddButton), "Add");
@@ -29,5 +31,10 @@ public class WebTablesPage extends BaseForm{
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorAddButton));
         builder.moveToElement(element).build().perform();
         btAdd.click();
+    }
+
+    public boolean appearTextFieldRegistrationFormOnWebTablesPage() throws IOException {
+        return rf.appearTextFieldRegistrationForm();
+
     }
 }

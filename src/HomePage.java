@@ -10,8 +10,8 @@ public class HomePage extends BaseForm {
     private String locatorMovetoAlertsFrameWindows="//div[@class='card-body']/h5[contains(text(),'Alert')]";
     private String locatorElements = "//div[@class='card mt-4 top-card'][1]";
 
-    HomePage(BaseElement uniqueElement, String name) {
-        super(uniqueElement, name);
+    HomePage(String name) {
+        super(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), name);
     }
 
     Actions builder = new Actions(Driver.getInstance());

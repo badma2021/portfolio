@@ -3,13 +3,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class BaseElement {
-    protected WebElement element=null;
+    protected By element;
     protected WebDriver wait;
-    protected By locator;
+
     protected String name;
 
-    protected BaseElement(By locator, String name) {
-        this.locator = locator;
+    public BaseElement(By element, String name) {
+        this.element = element;
         this.name = name;
 
     }

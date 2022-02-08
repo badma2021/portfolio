@@ -21,8 +21,9 @@ public class AlertsPage extends BaseForm {
     private String locatorYouEntered = "//*[@id='promptResult']";
 
 
-    protected AlertsPage(BaseElement uniqueElement, String name) {
-        super(uniqueElement, name);
+    protected AlertsPage(String name) {
+
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), name), name);
     }
 
     Actions builder = new Actions(Driver.getInstance());

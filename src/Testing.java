@@ -17,13 +17,16 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 public class Testing {
     ConfigReader cf = new ConfigReader();
 
-    HomePage hp = new HomePage(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), "Home page of DemoQA");
-    AlertsFrameWindowsPage afwp = new AlertsFrameWindowsPage(new TextField(By.xpath("//div[@class='main-header']"), "Main header of Alerts&Frame&Windows page"), "Alerts&Frame&Windows page");
-    AlertsPage ap = new AlertsPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), "Main header of Alerts page of DemoQA"), "Alerts page of DemoQA");
-    NestedFramesPage nf = new NestedFramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), "Main header of Nested Frames page of DemoQA"), "Nested Frame page of DemoQA");
-    FramesPage fp = new FramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), "Main header of Frames page of DemoQA"), "Frame page of DemoQA");
-    ElementsPage ep = new ElementsPage(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of Elements page of DemoQA"), "Elements page of DemoQA");
-    WebTablesPage wtp = new WebTablesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), "Main header of Web Tables page of DemoQA"), "Web Tables page of DemoQA");
+    //  HomePage hp = new HomePage(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), "Home page of DemoQA");
+    HomePage hp = new HomePage("Main page");
+    AlertsFrameWindowsPage afwp = new AlertsFrameWindowsPage("Alerts&Frame&Windows page");
+    AlertsPage ap = new AlertsPage("Alerts");
+    NestedFramesPage nf = new NestedFramesPage("Nested Frames page");
+    //NestedFramesPage nf = new NestedFramesPage(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), "Main header of Nested Frames page of DemoQA"), "Nested Frame page of DemoQA");
+    FramesPage fp = new FramesPage("Frames");
+    ElementsPage ep = new ElementsPage("Elements page");
+    WebTablesPage wtp = new WebTablesPage("Web Tables page");
+    BrowserWindows bw = new BrowserWindows("Browser Windows page");
 
     @BeforeTest
     public void setUp() throws IOException {
@@ -119,6 +122,7 @@ public class Testing {
     public void Tables() throws IOException {
         //Шаг1 Перейти на главную страницу
         Driver.getInstance().get(cf.util().getString("base_Url"));
+
         Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
 
         //Шаг2 Кликнуть на кнопку Elements.
@@ -130,7 +134,26 @@ public class Testing {
 
         //Шаг3 Кликнуть на кнопку Add.
         wtp.clickAddButton();
-        //Assert.assertTrue((wtp.appearTextFieldNestedFramesPage()), "Verification Failed: Registration form did not appear");
+        Assert.assertTrue((wtp.appearTextFieldRegistrationFormOnWebTablesPage()), "Verification Failed: Registration form did not appear");
+    }
+
+    @Test(description = "Test4", enabled = true)
+    public void Handles() throws IOException {
+//Шаг1 Перейти на главную страницу
+        Driver.getInstance().get(cf.util().getString("base_Url"));
+
+        //Шаг2 Кликнуть на кнопку Alerts, Frame & Windows.
+        //На открывшейся странице в левом меню кликнуть пункт Alerts
+        hp.clickTextFieldAlertsFrameWindows();
+        // Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: AlertsFrameWindowsPage page is not open");
+        afwp.clickMenuBrowserWindows();
+        // Assert.assertTrue((bw.appearTextFieldAlertsPage()), "Verification Failed: Browser Windows page is not open");
+
+        //Шаг3 Кликнуть на кнопку New Tab
+        bw.clickNewTabButton();
+        // Driver.getInstance().switchTo().Window(getInstance().WindowHandles[1]);
+
+
     }
 
 
