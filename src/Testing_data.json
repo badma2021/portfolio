@@ -1,21 +1,21 @@
 {
   "Registration data": [
     {
-      "User №": 1,
-      "First Name": "Jon",
-      "Last Name": "Snow",
+      "UserNumber": "1",
+      "FirstName": "Jon",
+      "LastName": "Snow",
       "Email": "knownothing@gmail.com",
-      "Age": 30,
-      "Salary": 3000,
+      "Age": "30",
+      "Salary": "3000",
       "Department": "alpha"
     },
     {
-      "User №": 2,
-      "First Name": "Buttercup",
-      "Last Name": "Cumbersnatch",
+      "UserNumber": "2",
+      "FirstName": "Buttercup",
+      "LastName": "Cumbersnatch",
       "Email": "BudapestCandygram@mail.ru",
-      "Age": 41,
-      "Salary": 2000,
+      "Age": "41",
+      "Salary": "2000",
       "Department": "beta"
     }
   ]

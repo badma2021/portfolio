@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static org.testng.TestRunner.PriorityWeight.priority;
+
 public class Testing {
 
     HomePage hp = new HomePage("Main page");
@@ -24,7 +26,7 @@ public class Testing {
 
 //Test case 1. Alerts
 
-    @Test(description = "Test1", enabled = true)
+    @Test(priority=1,description = "Test1", enabled = true)
     public void Alerts() throws IOException {
 
         //Шаг1 Перейти на главную страницу
@@ -74,7 +76,7 @@ public class Testing {
 
     //Test case 2. Iframe
 
-    @Test(description = "Test2", enabled = true)
+    @Test(priority=2, description = "Test2", enabled = true)
     public void Iframe() throws IOException {
 
         //Шаг1 Перейти на главную страницу
@@ -98,30 +100,34 @@ public class Testing {
         Assert.assertTrue(fp.getIframeText1FramesPage().equals(fp.getIframeText2FramesPage()), "Verification Failed: Internal text from two different Iframes is the same");
     }
 
-    @Test(description = "Test3", enabled = true)
-    public void Tables() throws IOException {
+//    @Test(priority=3,description = "Test3", enabled = true)
+//    public void Tables() throws IOException {
+//
+//        //Шаг1 Перейти на главную страницу
+//
+//        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));
+//
+//        Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
+//
+//        //Шаг2 Кликнуть на кнопку Elements.
+//        //На открывшейся странице в левом меню кликнуть пункт Web Tables
+//
+//        hp.clickTextFieldElements();
+//        Assert.assertTrue((ep.getTextFieldElementsPage()), "Verification Failed: Elements page is not open");
+//        ep.clickMenuWebTables();
+//        Assert.assertTrue((wtp.appearTextFieldWebTablesPage()), "Verification Failed: Web tables page is not open");
+//
+//        //Шаг3 Кликнуть на кнопку Add.
+//
+//        wtp.clickAddButton();
+//        Assert.assertTrue((wtp.appearTextFieldRegistrationFormOnWebTablesPage()), "Verification Failed: Registration form did not appear");
+//
+//
 
-        //Шаг1 Перейти на главную страницу
 
-        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));
+ //   }
 
-        Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
-
-        //Шаг2 Кликнуть на кнопку Elements.
-        //На открывшейся странице в левом меню кликнуть пункт Web Tables
-
-        hp.clickTextFieldElements();
-        Assert.assertTrue((ep.getTextFieldElementsPage()), "Verification Failed: Elements page is not open");
-        ep.clickMenuWebTables();
-        Assert.assertTrue((wtp.appearTextFieldWebTablesPage()), "Verification Failed: Web tables page is not open");
-
-        //Шаг3 Кликнуть на кнопку Add.
-
-        wtp.clickAddButton();
-        Assert.assertTrue((wtp.appearTextFieldRegistrationFormOnWebTablesPage()), "Verification Failed: Registration form did not appear");
-    }
-
-    @Test(description = "Test4", enabled = true)
+    @Test(priority=4,description = "Test4", enabled = true)
     public void Handles() throws IOException {
 
         //Шаг1 Перейти на главную страницу

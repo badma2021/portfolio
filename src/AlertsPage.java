@@ -11,14 +11,9 @@ import java.io.IOException;
 public class AlertsPage extends BaseForm {
     private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Alerts')]";
     private String locatorToSeeAlertButton = "//*[@id='alertButton']";
-    //public String labelYouClickedButto = "You clicked a button";
     private String locatorConfirmBoxButton = "//*[@id='confirmButton']";
-   // public String labelDoYouConfirmAction = "Do you confirm action?";
     private String locatorYouSelectedOk = "//*[@id='confirmResult']";
-   // public String labelYouSelectedOk = "You selected Ok";
     private String locatorPromptBoxButton = "//*[@id='promtButton']";
-    //public String labelPleaseEnterYourName = "Please enter your name";
-   // public String inputTextPromptBox = "I do not remember my password";
     private String locatorYouEntered = "//*[@id='promptResult']";
 
 
