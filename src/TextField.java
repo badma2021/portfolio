@@ -23,10 +23,10 @@ public class TextField extends BaseElement {
       return  Driver.getInstance().findElement(element).getText();
     }
 
-    String sendText(String s) {
-        Driver.getInstance().findElement(element).sendKeys();
+    void  sendText(String s) {
+        Driver.getInstance().findElement(element).sendKeys(s);
 
-        return s;
+        //return s;
     }
 //    void switchTo(){
 //        Driver.getInstance().switchTo().frame(webIframe);

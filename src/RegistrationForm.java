@@ -35,24 +35,24 @@ public class RegistrationForm extends BaseForm {
         return tFRegistrationForm.isDisplayed();
 
     }
-    public String getFInputFirstName(String key){
-        return tFInputFirstName.sendText(key);
+    public void getFInputFirstName(String key){
+         tFInputFirstName.sendText(key);
     }
-    public String getFInputLastName(String key){
-        return tFInputLastName.sendText(key);
+    public void getFInputLastName(String key){
+        tFInputLastName.sendText(key);
     }
-    public String getFInputUserEmail(String key){
-        return tFInputUserEmail.sendText(key);
+    public void getFInputUserEmail(String key){
+         tFInputUserEmail.sendText(key);
     }
 
-    public String getFInputAge(String key){
-        return tFInputAge.sendText(key);
+    public void getFInputAge(String key){
+         tFInputAge.sendText(key);
     }
-    public String getFInputSalary(String key){
-        return tFInputSalary.sendText(key);
+    public void getFInputSalary(String key){
+         tFInputSalary.sendText(key);
     }
-    public String getFInputDepartment(String key){
-        return tFInputDepartment.sendText(key);
+    public void getFInputDepartment(String key){
+        tFInputDepartment.sendText(key);
     }
 
     public void clickSubmitButton() throws IOException {
