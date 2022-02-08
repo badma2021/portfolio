@@ -1,18 +1,14 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
+package Utils;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.json.simple.parser.ParseException;
-import com.google.gson.JsonArray;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.FileHandler;
 
 
 public class JSON_Reader {

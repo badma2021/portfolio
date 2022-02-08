@@ -1,3 +1,5 @@
+package Utils;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -5,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +15,7 @@ public class BrowserFactory {
 
         private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
-        public static WebDriver getBrowser(String browserName) {
+        public static WebDriver getBrowser(String browserName) throws IOException {
             WebDriver driver = null;
 
             switch (browserName) {
@@ -37,7 +40,7 @@ public class BrowserFactory {
                     if (driver == null) {
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions options = new ChromeOptions();
-                        options.addArguments("incognito");
+                        options.addArguments(ConfigReader.util().getString("mode"));
                         driver = new ChromeDriver(options);
 
                         drivers.put("Chrome", driver);

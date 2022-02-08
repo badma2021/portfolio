@@ -4,55 +4,68 @@ import org.openqa.selenium.interactions.Actions;
 
 public class MenuForm extends BaseForm {
 
-    public static String locatorMenuAlerts = "//*[@id='item-1']/span[contains(text(),'Alerts')]";
-    public static String locatorMovetoMenuAlerts = "//*[@id='item-3']/span[contains(text(),'Nested')]";
-    private static String locatorMovetoMenuNestedFrames=".//*[text()='Widgets']";
-    private static String locatorMovetoMenuFrames="//*[@id='item-2']/span[contains(text(),'Frames')]";
-    public static String locatorMenuWebTables="//*[@id='item-3']/span[contains(text(),'Tables')]";
-    public static String locatorMovetoMenuButtons="//*[@id='item-6']/span[contains(text(),'Broken Links')]";
-    private String locatorMenuBrowserWindows= "//*[@id='item-0']/span[contains(text(),'Browser')]";
+    private String locatorMenuAlerts = "//*[@id='item-1']/span[contains(text(),'Alerts')]";
+    private String locatorMovetoMenuAlerts = "//*[@id='item-3']/span[contains(text(),'Nested')]";
+    private String locatorMovetoMenuNestedFrames = ".//*[text()='Widgets']";
+    private String locatorMovetoMenuFrames = "//*[@id='item-2']/span[contains(text(),'Frames')]";
+    private String locatorMenuWebTables = "//*[@id='item-3']/span[contains(text(),'Tables')]";
+    private String locatorMovetoMenuButtons = "//*[@id='item-6']/span[contains(text(),'Broken Links')]";
+    private String locatorMenuBrowserWindows = "//*[@id='item-0']/span[contains(text(),'Browser')]";
 
-    protected MenuForm(BaseElement uniqueElement, String name) {
+    protected MenuForm(String name) {
 
-        super(uniqueElement, name);
+        super(new TextField(By.xpath(".//*[text()='Widgets']"), name), name);
     }
 
-    static TextField tFMenuAlerts = new TextField(By.xpath(locatorMenuAlerts), "Textfield Alerts on the menu");
-    static TextField tFMenuNestedFrames = new TextField(By.xpath(locatorMovetoMenuAlerts), "Textfield Nested Frames on the menu");
-    static TextField tFMenuFrames = new TextField(By.xpath(locatorMovetoMenuFrames), "Textfield Frames on the menu");
-    static TextField tFMenuWebTables = new TextField(By.xpath(locatorMenuWebTables), "Textfield Web Tables on the menu");
+    TextField tFMenuAlerts = new TextField(By.xpath(locatorMenuAlerts), "Textfield Alerts on the menu");
+    TextField tFMenuNestedFrames = new TextField(By.xpath(locatorMovetoMenuAlerts), "Textfield Nested Frames on the menu");
+    TextField tFMenuFrames = new TextField(By.xpath(locatorMovetoMenuFrames), "Textfield Frames on the menu");
+    TextField tFMenuWebTables = new TextField(By.xpath(locatorMenuWebTables), "Textfield Web Tables on the menu");
     TextField tFMenuBrowserWindows = new TextField(By.xpath(locatorMenuBrowserWindows), "Textfield Browser Windows on the menu");
 
-    public static void clickMenuAlerts() {
+    public void clickMenuAlerts() {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuAlerts));
         Actions builder = new Actions(Driver.getInstance());
         builder.moveToElement(element).build().perform();
         tFMenuAlerts.click();
     }
 
-    public static void clickMenuNestedFrames() {
+    public void clickMenuNestedFrames() {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuNestedFrames));
         Actions builder = new Actions(Driver.getInstance());
         builder.moveToElement(element).build().perform();
         tFMenuNestedFrames.click();
     }
-    public static void clickMenuFrames() {
+
+    public String getLocatorMovetoMenuAlerts() {
+        return locatorMovetoMenuAlerts;
+    }
+
+    public void clickMenuFrames() {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuNestedFrames));
         Actions builder = new Actions(Driver.getInstance());
         builder.moveToElement(element).build().perform();
         tFMenuFrames.click();
     }
-    public static void clickMenuWebTables() {
+
+    public void clickMenuWebTables() {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuButtons));
         Actions builder = new Actions(Driver.getInstance());
         builder.moveToElement(element).build().perform();
         tFMenuWebTables.click();
     }
+
+    public String getLocatorMenuAlerts() {
+        return locatorMenuAlerts;
+    }
+
     public void clickMenuBrowserWindows() {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuAlerts));
         Actions builder = new Actions(Driver.getInstance());
         builder.moveToElement(element).build().perform();
         tFMenuBrowserWindows.click();
+
+
     }
 
 

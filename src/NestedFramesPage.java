@@ -14,10 +14,13 @@ public class NestedFramesPage extends BaseForm {
     }
 
     private String locatorNestedFramesHeader = "//div[@class='main-header'][contains(text(),'Nested')]";
-    public String locatorIframe = "//*[@id='frame1']";
+    private String locatorIframe = "//*[@id='frame1']";
     public String labelIframeInternalText = "Parent frame Child Iframe";
     private String locatorIframeParentText = "/html/body";
     private String locatorIframeChildText = "/html/body/p";
+
+
+    MenuForm mf = new MenuForm("Left hand side base menu");
     Actions builder = new Actions(Driver.getInstance());
     TextField tFNestedFramesPage = new TextField(By.xpath(locatorNestedFramesHeader), "Main header of Nested Frames page");
     TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");
@@ -30,7 +33,7 @@ public class NestedFramesPage extends BaseForm {
 
     public String getIframeText() throws IOException {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(MenuForm.locatorMovetoMenuAlerts));
+        WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMovetoMenuAlerts()));
         builder.moveToElement(element).build().perform();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe)));
         Driver.getInstance().switchTo().frame(webIframe);
@@ -45,7 +48,7 @@ public class NestedFramesPage extends BaseForm {
     }
 
     public void clickMenuFrames(){
-        MenuForm.clickMenuFrames();
+        mf.clickMenuFrames();
     }
 
 }

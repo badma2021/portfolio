@@ -13,8 +13,9 @@ public class RegistrationForm extends BaseForm {
     private String locatorInputDepartment = "//*[@id='department']";
 
 
-    protected RegistrationForm(BaseElement uniqueElement, String name) {
-        super(uniqueElement, name);
+    protected RegistrationForm(String name) {
+
+        super(new TextField(By.xpath("//*[@id='registration-form-modal']"), name), name);
     }
 
     TextField tFRegistrationForm = new TextField(By.xpath(locatorRegistrationFormHeader), "Textfield Registration Form");

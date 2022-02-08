@@ -13,7 +13,7 @@ public class AlertsFrameWindowsPage extends BaseForm {
     }
 
     TextField tFAlertsFrameWindowsPage = new TextField(By.xpath(locatorAlertsFrameWindowsHeader), "Main header of Alerts&Frame&Windows page");
-    MenuForm mf = new MenuForm(new TextField(By.xpath(".//*[text()='Widgets']"), "Widgets textfield of left hand-side Menu of DemoQA"), "left hand-side Menu of DemoQA");
+    MenuForm mf = new MenuForm("Left hand side base menu");
 
     public boolean getTextFieldAlertsFrameWindowsPage() throws IOException {
         return tFAlertsFrameWindowsPage.isDisplayed();
@@ -21,11 +21,11 @@ public class AlertsFrameWindowsPage extends BaseForm {
     }
 
     public void clickMenuAlerts() {
-        MenuForm.clickMenuAlerts();
+        mf.clickMenuAlerts();
     }
 
     public void clickMenuNestedFrames() {
-        MenuForm.clickMenuNestedFrames();
+        mf.clickMenuNestedFrames();
     }
 
     public void clickMenuBrowserWindows() {

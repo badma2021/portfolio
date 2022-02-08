@@ -11,7 +11,7 @@ public class ElementsPage extends BaseForm {
 
         super(new TextField(By.xpath("//*[@id='app']/header/a/img"), name), name);
     }
-
+    MenuForm mf = new MenuForm("Left hand side base menu");
     TextField tFHeaderElements = new TextField(By.xpath(locatorHeaderElements), "Main header of Elements page of DemoQA");
 
     public boolean getTextFieldElementsPage() throws IOException {
@@ -20,6 +20,6 @@ public class ElementsPage extends BaseForm {
     }
 
     public void clickMenuWebTables() {
-        MenuForm.clickMenuWebTables();
+        mf.clickMenuWebTables();
     }
 }

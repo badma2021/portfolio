@@ -1,4 +1,4 @@
-package configs;
+package Utils;
 
 import org.json.*;
 //import org.json.simple.JSONObject;
@@ -11,7 +11,7 @@ public class ConfigReader {
 
     public JSONObject js;
 
-    public JSONObject util() throws IOException {
+    public static JSONObject util() throws IOException {
         String propertyFilePath = "configs/Config.json";
         try (
                 BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath))) {

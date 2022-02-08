@@ -1,5 +1,11 @@
 {
   "base_Url" : "https://demoqa.com/",
-  "timeout" : "15"
+  "timeout" : "15",
+  "mode": "incognito",
+  "first_alert": "You clicked a button",
+  "second_alert": "Do you confirm action?",
+  "third_alert": "You selected Ok",
+  "forth_alert": "Please enter your name",
+  "input1": "I do not remember my password"
 
 }

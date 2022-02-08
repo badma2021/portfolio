@@ -16,7 +16,7 @@ public class WebTablesPage extends BaseForm {
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), name), name);
     }
 
-    RegistrationForm rf = new RegistrationForm(new TextField(By.xpath("//*[@id='registration-form-modal']"), "Main header of Registration form appeared on Web Tables page of DemoQA"), "Registration form appeared on Web Tables page of DemoQA");
+    RegistrationForm rf = new RegistrationForm("Registration form");
     Actions builder = new Actions(Driver.getInstance());
     TextField tFWebTablesPage = new TextField(By.xpath(locatorWebTablesHeader), "Main header of Web Tables page");
     Button btAdd = new Button(By.xpath(locatorAddButton), "Add");

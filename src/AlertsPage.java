@@ -1,3 +1,4 @@
+import Utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -10,14 +11,14 @@ import java.io.IOException;
 public class AlertsPage extends BaseForm {
     private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Alerts')]";
     private String locatorToSeeAlertButton = "//*[@id='alertButton']";
-    public String labelYouClickedButton = "You clicked a button";
+    //public String labelYouClickedButto = "You clicked a button";
     private String locatorConfirmBoxButton = "//*[@id='confirmButton']";
-    public String labelDoYouConfirmAction = "Do you confirm action?";
+   // public String labelDoYouConfirmAction = "Do you confirm action?";
     private String locatorYouSelectedOk = "//*[@id='confirmResult']";
-    public String labelYouSelectedOk = "You selected Ok";
+   // public String labelYouSelectedOk = "You selected Ok";
     private String locatorPromptBoxButton = "//*[@id='promtButton']";
-    public String labelPleaseEnterYourName = "Please enter your name";
-    public String inputTextPromptBox = "I do not remember my password";
+    //public String labelPleaseEnterYourName = "Please enter your name";
+   // public String inputTextPromptBox = "I do not remember my password";
     private String locatorYouEntered = "//*[@id='promptResult']";
 
 
@@ -28,6 +29,7 @@ public class AlertsPage extends BaseForm {
 
     Actions builder = new Actions(Driver.getInstance());
     Alerts alert = new Alerts();
+    MenuForm mf=new MenuForm("Left hand side base menu");
     TextField tFAlertsPage = new TextField(By.xpath(locatorAlertsHeader), "Main header of Alerts page");
     TextField tFYouSelectedOK = new TextField(By.xpath(locatorYouSelectedOk), "Label along confirm box after pushing");
     TextField tFYouEntered = new TextField(By.xpath(locatorYouEntered), "Label along prompt box after pushing");
@@ -94,13 +96,13 @@ public class AlertsPage extends BaseForm {
 
     public void clickPromptBoxButton() throws IOException {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(MenuForm.locatorMenuAlerts));
+        WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMenuAlerts()));
         builder.moveToElement(element).build().perform();
         btPromptBox.click();
     }
 
     public void sendTextPromptBox() throws IOException {
-        alert.sendText(inputTextPromptBox);
+        alert.sendText(ConfigReader.util().getString("input1"));
     }
 
 }

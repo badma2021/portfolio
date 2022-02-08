@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 public abstract class BaseElement {
     protected By element;
     protected WebDriver wait;
-
     protected String name;
 
     public BaseElement(By element, String name) {

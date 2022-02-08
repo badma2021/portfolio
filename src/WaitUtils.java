@@ -1,4 +1,4 @@
-import org.openqa.selenium.WebDriver;
+import Utils.ConfigReader;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class WaitUtils {
     private static WebDriverWait wait = null;
-    private static configs.ConfigReader cf = new configs.ConfigReader();
+    private static ConfigReader cf = new ConfigReader();
 
     private WaitUtils() {
     }

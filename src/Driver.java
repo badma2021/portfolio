@@ -1,18 +1,7 @@
+import Utils.BrowserFactory;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.CapabilityType;
-import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
@@ -25,10 +14,11 @@ public class Driver {
         try {
             if (driver == null) {
                 driver = BrowserFactory.getBrowser("Chrome");
-                //driver.manage().timeouts().implicitlyWait(20, TimeUnit.NANOSECONDS);
             }
 
         } catch (WebDriverException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return driver;
