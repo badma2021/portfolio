@@ -1,9 +1,13 @@
+package Elements;
+
+import Elements.BaseElement;
+import Utils.Driver;
 import org.openqa.selenium.By;
 
-public class Button extends BaseElement{
+public class Button extends BaseElement {
 
 
-    protected Button(By element, String name) {
+    public Button(By element, String name) {
         super(element, name);
     }
 
@@ -13,7 +17,7 @@ public class Button extends BaseElement{
     }
 
     @Override
-    void click() {
+    public void click() {
         Driver.getInstance().findElement(element).click();
 
     }

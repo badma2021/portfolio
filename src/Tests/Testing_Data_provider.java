@@ -1,5 +1,11 @@
+package Tests;
+
+import Pages.*;
 import Utils.ConfigReader;
+import Utils.Driver;
 import Utils.JSON_Reader;
+import Utils.LoggerTest;
+import org.apache.log4j.Level;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -21,9 +27,9 @@ public class Testing_Data_provider {
         HomePage hp = new HomePage("Main page");
         ElementsPage ep = new ElementsPage("Elements page");
         WebTablesPage wtp = new WebTablesPage("Web Tables page");
-        BrowserWindows bw = new BrowserWindows("Browser Windows page");
+        BrowserWindows bw = new BrowserWindows("Utils.Browser Windows page");
         RegistrationForm rf = new RegistrationForm("Registration form");
-
+        LoggerTest.log(Level.INFO,"3d test is starting");
         Driver.getInstance().manage().window().maximize();
         Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
 
@@ -36,7 +42,7 @@ public class Testing_Data_provider {
 
 
         wtp.clickAddButton();//Шаг3
-       // Assert.assertTrue((wtp.appearTextFieldRegistrationFormOnWebTablesPage()), "Verification Failed: Registration form did not appear");
+        Assert.assertTrue((wtp.appearTextFieldRegistrationFormOnWebTablesPage()), "Verification Failed: Registration form did not appear");
 
         rf.getFInputFirstName(FirstName);
         rf.getFInputLastName(LastName);
@@ -45,7 +51,14 @@ public class Testing_Data_provider {
         rf.getFInputSalary(Salary);
         rf.getFInputDepartment(Department);
         rf.clickSubmitButton();
-
+        LoggerTest.log(Level.INFO,"Getting new user info from the table of the site " + wtp.getRowTextFromNewUser());
+        LoggerTest.log(Level.INFO,"Reading from JSON the following data " + FirstName+LastName+Age+Email+Salary+Department);
+//        System.out.println(wtp.getRowTextFromNewUser());
+//        System.out.println(FirstName+LastName+Age+Email+Salary+Department);
+        Assert.assertEquals(wtp.getRowTextFromNewUser(),FirstName+LastName+Age+Email+Salary+Department,"Verification Failed:New User data does not equal to which appeared in the table");
+        wtp.clickRemoveUserButton();
+        System.out.println(wtp.appearTextFieldAddedUser());
+       Assert.assertTrue((wtp.appearTextFieldAddedUser()),"Verification Failed: New user is not removed");
 
     }
 

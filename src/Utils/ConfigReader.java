@@ -3,6 +3,7 @@ import org.json.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import org.json.JSONObject;
 
 public class ConfigReader {
 

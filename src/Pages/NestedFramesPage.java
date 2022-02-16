@@ -1,5 +1,9 @@
+package Pages;
+
+import Elements.TextField;
+import Utils.Driver;
+import Utils.WaitUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -25,7 +29,7 @@ public class NestedFramesPage extends BaseForm {
     TextField tFNestedFramesPage = new TextField(By.xpath(locatorNestedFramesHeader), "Main header of Nested Frames page");
     TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");
     TextField iFChildNestedFramesPage = new TextField(By.xpath(locatorIframeChildText), "Child Iframe in Nested Frames page");
-//TextField maMovetoMenuAlerts=new TextField(By.xpath(MenuForm.locatorMovetoMenuAlerts), "Child Iframe in Nested Frames page");
+//Elements.TextField maMovetoMenuAlerts=new Elements.TextField(By.xpath(Pages.MenuForm.locatorMovetoMenuAlerts), "Child Iframe in Nested Frames page");
     public boolean appearTextFieldNestedFramesPage() throws IOException {
         return tFNestedFramesPage.isDisplayed();
 

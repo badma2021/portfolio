@@ -1,3 +1,5 @@
+package Utils;
+
 import Utils.BrowserFactory;
 import org.openqa.selenium.*;
 

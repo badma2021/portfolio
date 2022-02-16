@@ -1,4 +1,7 @@
-import org.json.JSONObject;
+package Pages;//import org.json.JSONObject;
+import Elements.TextField;
+import Pages.BaseForm;
+import Utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,7 +20,7 @@ public class RegistrationForm extends BaseForm {
     private String locatorSubmitButton="//*[@id='submit']";
 
 
-    protected RegistrationForm(String name) {
+    public RegistrationForm(String name) {
 
         super(new TextField(By.xpath("//*[@id='registration-form-modal']"), name), name);
     }

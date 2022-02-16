@@ -1,20 +1,22 @@
-import org.openqa.selenium.By;
+package Pages;
 
-import java.io.IOException;
+import Elements.TextField;
+import Pages.BaseForm;
+import org.openqa.selenium.By;
 
 public class ElementsPage extends BaseForm {
 
     private String locatorHeaderElements = "//*[@id='app']/header/a/img";
 
 
-    protected ElementsPage(String name) {
+    public ElementsPage(String name) {
 
         super(new TextField(By.xpath("//*[@id='app']/header/a/img"), name), name);
     }
     MenuForm mf = new MenuForm("Left hand side base menu");
     TextField tFHeaderElements = new TextField(By.xpath(locatorHeaderElements), "Main header of Elements page of DemoQA");
 
-    public boolean getTextFieldElementsPage() throws IOException {
+    public boolean getTextFieldElementsPage() {
         return tFHeaderElements.isDisplayed();
 
     }

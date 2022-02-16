@@ -1,4 +1,6 @@
-import org.openqa.selenium.WebElement;
+package Pages;
+
+import Elements.BaseElement;
 
 public abstract class BaseForm {
 

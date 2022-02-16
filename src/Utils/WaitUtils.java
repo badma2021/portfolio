@@ -1,4 +1,7 @@
+package Utils;
+
 import Utils.ConfigReader;
+import Utils.Driver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

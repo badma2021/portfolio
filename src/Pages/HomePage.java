@@ -1,33 +1,39 @@
+package Pages;
+
+import Elements.TextField;
+import Pages.BaseForm;
+import Utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.io.IOException;
 
 public class HomePage extends BaseForm {
     private String locatorAlertsFrameWindows = "//div[@class='card mt-4 top-card'][3]";
     private String locatorHeaderHomepage = "//*[@id='app']/header/a/img";
     private String locatorMovetoAlertsFrameWindows="//div[@class='card-body']/h5[contains(text(),'Alert')]";
     private String locatorElements = "//div[@class='card mt-4 top-card'][1]";
+    private String locatorWidgets="//div[@class='card mt-4 top-card'][4]";
 
-    HomePage(String name) {
+    public HomePage(String name) {
         super(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), name);
     }
 
     Actions builder = new Actions(Driver.getInstance());
 
 
-    TextField tFAlertsFrameWindows = new TextField(By.xpath(locatorAlertsFrameWindows), "Alerts&Frame&Windows");
+    TextField tFAlertsFrameWindows = new TextField(By.xpath(locatorAlertsFrameWindows), "Utils.Alerts&Frame&Windows");
     TextField tFHeaderHomepage = new TextField(By.xpath(locatorHeaderHomepage), "Main header of home page of DemoQA");
     TextField tFElements = new TextField(By.xpath(locatorElements), "Elements");
+    TextField tFWidgets = new TextField(By.xpath(locatorWidgets), "Widgets");
 
-    public boolean getTextFieldHeaderHomepage() throws IOException {
+
+    public boolean getTextFieldHeaderHomepage(){
         return tFHeaderHomepage.isDisplayed();
 
     }
 
-    public void clickTextFieldAlertsFrameWindows() throws IOException {
-//       Driver.getInstance().findElement(By.xpath(alertsFrameWindows)).click();
+    public void clickTextFieldAlertsFrameWindows() {
 
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoAlertsFrameWindows));
         builder.moveToElement(element).build().perform();
@@ -35,13 +41,20 @@ public class HomePage extends BaseForm {
         tFAlertsFrameWindows.click();
     }
 
-    public void clickTextFieldElements() throws IOException {
-//       Driver.getInstance().findElement(By.xpath(alertsFrameWindows)).click();
+    public void clickTextFieldElements()  {
 
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoAlertsFrameWindows));
         builder.moveToElement(element).build().perform();
 
         tFElements.click();
+    }
+
+    public void clickTextFieldWidgets() {
+
+        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoAlertsFrameWindows));
+        builder.moveToElement(element).build().perform();
+
+        tFWidgets.click();
     }
 
 }

@@ -1,11 +1,18 @@
 {
-  "base_Url" : "https://demoqa.com/",
-  "timeout" : "15",
+  "base_Url": "https://demoqa.com/",
+  "timeout": "15",
   "mode": "incognito",
   "first_alert": "You clicked a button",
   "second_alert": "Do you confirm action?",
   "third_alert": "You selected Ok",
   "forth_alert": "Please enter your name",
-  "input1": "I do not remember my password"
-
+  "input1": "I do not remember my password",
+  "user_number": "4",
+  "new_tab_url": "https://demoqa.com/sample",
+  "new_tab": "This is a sample page",
+  "date_picker_year": "2024",
+  "date_picker_month": "February",
+  "datepicker": "March",
+  "date_picker_number": "29",
+  "date_picker_date": "02/29/2024"
 }

@@ -1,3 +1,8 @@
+package Pages;
+
+import Elements.TextField;
+import Utils.Driver;
+import Utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,7 +19,7 @@ public class FramesPage extends BaseForm {
     private String locatorIframe2TextField = "//*[@id='frame2']";
 
 
-    protected FramesPage(String name) {
+    public FramesPage(String name) {
 
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), name), name);
     }
@@ -24,12 +29,12 @@ public class FramesPage extends BaseForm {
     TextField ifIframe1TextFieldText = new TextField(By.xpath(locatorIframe1TextFieldText), "1st Iframe internal text in Frames page");
 
 
-    public boolean appearTextFieldFramesPage() throws IOException {
+    public boolean appearTextFieldFramesPage(){
         return tFFramesPage.isDisplayed();
 
     }
 
-    public String getIframeText1FramesPage() throws IOException {
+    public String getIframeText1FramesPage() {
 
         WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMovetoMenuAlerts()));
         builder.moveToElement(element).build().perform();

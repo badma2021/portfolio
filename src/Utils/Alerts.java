@@ -1,3 +1,6 @@
+package Utils;
+
+import Utils.Driver;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 
@@ -23,5 +26,7 @@ public class Alerts {
     public void sendText(String text) {
         Driver.getInstance().switchTo().alert().sendKeys(text);
     }
+
+
 
 }
