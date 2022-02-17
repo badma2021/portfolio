@@ -4,7 +4,8 @@ import Elements.BaseElement;
 import Utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.devtools.v85.input.Input;
+import org.openqa.selenium.interactions.Actions;
+
 
 public class TextField extends BaseElement {
 
@@ -14,22 +15,21 @@ public class TextField extends BaseElement {
     }
 
     @Override
-    public boolean isDisplayed() {
-        return Driver.getInstance().findElement(element).isDisplayed();
+    public void click() {
+        super.click();
     }
 
     @Override
-    public void click() {
-        Driver.getInstance().findElement(element).click();
-
+    public boolean isDisplayed() {
+        return super.isDisplayed();
     }
 
     @Override
     public String getText() {
-        return Driver.getInstance().findElement(element).getText();
+        return super.getText();
     }
 
-   public void sendText(String s) {
+    public void sendText(String s) {
         Driver.getInstance().findElement(element).sendKeys(s);
 
     }
@@ -39,11 +39,13 @@ public class TextField extends BaseElement {
         return Driver.getInstance().findElement(element).getText().replaceAll("\n|\r\n", "");
     }
 
-    public void clear() {
-        Driver.getInstance().findElement(element).sendKeys(Keys.CONTROL + "A");
-        Driver.getInstance().findElement(element).sendKeys(Keys.BACK_SPACE);
+    public String getAttribute() {
+        return Driver.getInstance().findElement(element).getAttribute("value");
     }
-    public String getAttribute(){
-       return Driver.getInstance().findElement(element).getAttribute("value");
+
+    @Override
+    public void moveTo() {
+        super.moveTo();
+
     }
 }

@@ -21,7 +21,7 @@ public class FramesPage extends BaseForm {
 
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"),"Main header of Frames page"), "Frames page");
     }
-    private MenuForm mf = new MenuForm("Left hand side base menu");
+    private MenuForm mf = new MenuForm();
     Actions builder = new Actions(Driver.getInstance());
     private TextField tFFramesPage = new TextField(By.xpath(locatorFramesHeader), "Main header of Frames page");
     private TextField ifIframe1TextFieldText = new TextField(By.xpath(locatorIframe1TextFieldText), "1st Iframe internal text in Frames page");

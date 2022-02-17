@@ -16,14 +16,14 @@ public class MenuForm extends BaseForm {
     private final String locatorMenuWebTables = "//*[@id='item-3']/span[contains(text(),'Tables')]";
     private final String locatorMovetoMenuButtons = "//*[@id='item-6']/span[contains(text(),'Broken Links')]";
     private final String locatorMenuBrowserWindows = "//*[@id='item-0']/span[contains(text(),'Browser')]";
-    private final String locatorMenuElements=".//*[text()='Elements']";
-    private final String locatorMenuElementsLinks="//*[@id='item-5']/span[contains(text(),'Links')]";
-    private final String locatorDatePickers="//*[@id='item-2']/span[contains(text(),'Picker')]";
-    private final String locatorToolTips="//*[@id='item-6']/span[contains(text(),'Tips')]";
+    private final String locatorMenuElements = ".//*[text()='Elements']";
+    private final String locatorMenuElementsLinks = "//*[@id='item-5']/span[contains(text(),'Links')]";
+    private final String locatorDatePickers = "//*[@id='item-2']/span[contains(text(),'Picker')]";
+    private final String locatorToolTips = "//*[@id='item-6']/span[contains(text(),'Tips')]";
 
-    protected MenuForm(String name) {
+    protected MenuForm() {
 
-        super(new TextField(By.xpath(".//*[text()='Widgets']"), name), name);
+        super(new TextField(By.xpath(".//*[text()='Widgets']"), "Widgets textfield"), "Left hand side base menu");
     }
 
     private TextField tFMenuAlerts = new TextField(By.xpath(locatorMenuAlerts), "Textfield Utils.Alerts on the menu");
@@ -34,17 +34,18 @@ public class MenuForm extends BaseForm {
     private TextField tfMenuElements = new TextField(By.xpath(locatorMenuElements), "Elements field on Menu from Utils.Browser Windows");
     private TextField tfMenuElementsLinks = new TextField(By.xpath(locatorMenuElementsLinks), "Links field on Menu=>Elements from Utils.Browser Windows");
     private TextField tfDatePickers = new TextField(By.xpath(locatorDatePickers), "Date Pickers");
-    Actions builder = new Actions(Driver.getInstance());
+    private TextField tFMovetoMenuNestedFrames = new TextField(By.xpath(locatorMovetoMenuNestedFrames), "TextField Widgets on the menu");
+    private TextField tFMovetoMenuButtons = new TextField(By.xpath(locatorMovetoMenuButtons), "Textfield Buttons on the menu");
+    private TextField tFMovetoToolTips = new TextField(By.xpath(locatorToolTips), "Textfield Tool Tips on the menu");
+
 
     public void clickMenuAlerts() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuAlerts));
-        builder.moveToElement(element).build().perform();
+        tFMenuNestedFrames.moveTo();
         tFMenuAlerts.click();
     }
 
     public void clickMenuNestedFrames() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuNestedFrames));
-        builder.moveToElement(element).build().perform();
+        tFMovetoMenuNestedFrames.moveTo();
         tFMenuNestedFrames.click();
     }
 
@@ -53,42 +54,42 @@ public class MenuForm extends BaseForm {
     }
 
     public void clickMenuFrames() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuNestedFrames));
-        builder.moveToElement(element).build().perform();
+        tFMovetoMenuNestedFrames.moveTo();
         tFMenuFrames.click();
     }
 
     public void clickMenuWebTables() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuButtons));
-        builder.moveToElement(element).build().perform();
+        tFMovetoMenuButtons.moveTo();
         tFMenuWebTables.click();
     }
 
-    public String getLocatorMenuAlerts() {
-        return locatorMenuAlerts;
-    }
-
     public void clickMenuBrowserWindows() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuAlerts));
-        builder.moveToElement(element).build().perform();
+        tFMenuNestedFrames.moveTo();
         tFMenuBrowserWindows.click();
     }
+
     public void clickMenuElements() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMenuElements));
-        builder.moveToElement(element).build().perform();
+        tfMenuElements.moveTo();
         tfMenuElements.click();
     }
+
     public void clickMenuElementsLinks() {
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorMovetoMenuNestedFrames));
-        builder.moveToElement(element).build().perform();
+        tFMovetoMenuNestedFrames.moveTo();
         tfMenuElementsLinks.click();
 
     }
+
     public void clickTextDatePicker() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorToolTips));
-        builder.moveToElement(element).build().perform();
+        tFMovetoToolTips.moveTo();
 
         tfDatePickers.click();
+    }
+
+    public void moveTotFMenuAlerts() {
+        tFMenuAlerts.moveTo();
+    }
+    public void moveToDatePickers() {
+        tfDatePickers.moveTo();
     }
 }

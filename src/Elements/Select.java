@@ -17,8 +17,12 @@ public class Select extends BaseElement {
 
     @Override
     public void click() {
-        Driver.getInstance().findElement(element).click();
+        super.click();
+    }
 
+    @Override
+    public void moveTo() {
+        super.moveTo();
     }
 
 }

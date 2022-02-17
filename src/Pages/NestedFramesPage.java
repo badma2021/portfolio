@@ -23,7 +23,7 @@ public class NestedFramesPage extends BaseForm {
     private final String locatorIframeChildText = "/html/body/p";
 
 
-    private MenuForm mf = new MenuForm("Left hand side base menu");
+    private MenuForm mf = new MenuForm();
     Actions builder = new Actions(Driver.getInstance());
     private TextField tFNestedFramesPage = new TextField(By.xpath(locatorNestedFramesHeader), "Main header of Nested Frames page");
     private TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");

@@ -1,8 +1,9 @@
 package Elements;
 
+import Utils.ActionsBuilder;
+import Utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public abstract class BaseElement {
     protected By element;
@@ -16,14 +17,18 @@ public abstract class BaseElement {
     }
 
     boolean isDisplayed() {
-        return false;
+        return Driver.getInstance().findElement(element).isDisplayed();
     }
 
     void click() {
-
+        Driver.getInstance().findElement(element).click();
     }
 
     String getText() {
-        return null;
+        return Driver.getInstance().findElement(element).getText();
+    }
+
+    void moveTo(){
+        ActionsBuilder.getInstance().moveToElement(Driver.getInstance().findElement(element)).build().perform();
     }
 }

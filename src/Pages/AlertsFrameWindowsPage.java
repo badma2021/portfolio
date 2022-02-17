@@ -2,9 +2,6 @@ package Pages;
 
 import Elements.TextField;
 import org.openqa.selenium.By;
-
-import java.io.IOException;
-
 public class AlertsFrameWindowsPage extends BaseForm {
 
 
@@ -16,9 +13,9 @@ public class AlertsFrameWindowsPage extends BaseForm {
     }
 
     private TextField tFAlertsFrameWindowsPage = new TextField(By.xpath(locatorAlertsFrameWindowsHeader), "Main header of Alerts&Frame&Windows page");
-    private MenuForm mf = new MenuForm("Left hand side base menu");
+    private MenuForm mf = new MenuForm();
 
-    public boolean getTextFieldAlertsFrameWindowsPage() throws IOException {
+    public boolean getTextFieldAlertsFrameWindowsPage() {
         return tFAlertsFrameWindowsPage.isDisplayed();
 
     }

@@ -28,9 +28,9 @@ public class AlertsPage extends BaseForm {
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), "Main header of Alerts page"), "Alerts page");
     }
 
-    Actions builder = new Actions(Driver.getInstance());
-    AlertsUtil alert = new AlertsUtil();
-    private MenuForm mf = new MenuForm("Left hand side base menu");
+
+    private AlertsUtil alert = new AlertsUtil();
+    private MenuForm mf = new MenuForm();
     private TextField tFAlertsPage = new TextField(By.xpath(locatorAlertsHeader), "Main header of Alerts page");
     private TextField tFYouSelectedOK = new TextField(By.xpath(locatorYouSelectedOk), "Label along confirm box after pushing");
     private TextField tFYouEntered = new TextField(By.xpath(locatorYouEntered), "Label along prompt box after pushing");
@@ -56,8 +56,7 @@ public class AlertsPage extends BaseForm {
 
     public void clickToSeeAlertButton() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorToSeeAlertButton));
-        builder.moveToElement(element).build().perform();
+        btToSeeAlert.moveTo();
         btToSeeAlert.click();
     }
 
@@ -83,15 +82,13 @@ public class AlertsPage extends BaseForm {
 
     public void clickConfirmBoxButton() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorConfirmBoxButton));
-        builder.moveToElement(element).build().perform();
+        btConfirmBox.moveTo();
         btConfirmBox.click();
     }
 
     public void clickPromptBoxButton() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMenuAlerts()));
-        builder.moveToElement(element).build().perform();
+        mf.moveTotFMenuAlerts();
         btPromptBox.click();
     }
 

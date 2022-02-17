@@ -13,7 +13,7 @@ public class ElementsPage extends BaseForm {
 
         super(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of Elements page"), "Elements page");
     }
-    private MenuForm mf = new MenuForm("Left hand side base menu");
+    private MenuForm mf = new MenuForm();
     private TextField tFHeaderElements = new TextField(By.xpath(locatorHeaderElements), "Main header of Elements page of DemoQA");
 
     public boolean getTextFieldElementsPage() {

@@ -1,7 +1,4 @@
 package Elements;
-
-import Elements.BaseElement;
-import Utils.Driver;
 import org.openqa.selenium.By;
 
 public class Button extends BaseElement {
@@ -12,19 +9,21 @@ public class Button extends BaseElement {
     }
 
     @Override
-    boolean isDisplayed() {
-        return Driver.getInstance().findElement(element).isDisplayed();
+    public void click() {
+        super.click();
     }
 
     @Override
-    public void click() {
-        Driver.getInstance().findElement(element).click();
-
+    public boolean isDisplayed() {
+        return super.isDisplayed();
     }
 
     @Override
     String getText() {
-        super.getText();
-        return null;
+       return super.getText();
+
     }
+    @Override
+    public void moveTo() {
+        super.moveTo();}
 }
