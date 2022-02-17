@@ -14,8 +14,8 @@ public class BrowserWindows extends BaseForm {
     private final String locatorSamplePage="//*[@id='sampleHeading']";
 
 
-    public BrowserWindows(String name) {
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Browser')]"), name), name);
+    public BrowserWindows() {
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Browser')]"), "Main header of Browser Windows page"), "Browser Windows page");
     }
 
     private MenuForm mf = new MenuForm("Left hand side base menu");

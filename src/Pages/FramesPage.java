@@ -7,8 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.io.IOException;
-
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class FramesPage extends BaseForm {
@@ -19,9 +17,9 @@ public class FramesPage extends BaseForm {
     private final String locatorIframe2TextField = "//*[@id='frame2']";
 
 
-    public FramesPage(String name) {
+    public FramesPage() {
 
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), name), name);
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"),"Main header of Frames page"), "Frames page");
     }
     private MenuForm mf = new MenuForm("Left hand side base menu");
     Actions builder = new Actions(Driver.getInstance());

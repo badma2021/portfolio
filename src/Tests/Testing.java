@@ -25,21 +25,18 @@ import java.util.Locale;
 
 
 public class Testing {
-    private static final Logger logger = Logger.getLogger(
-            Testing.class);
-    HomePage hp = new HomePage("Main page");
-    AlertsFrameWindowsPage afwp = new AlertsFrameWindowsPage("Utils.Alerts&Frame&Windows page");
-    AlertsPage ap = new AlertsPage("Utils.Alerts");
-    NestedFramesPage nf = new NestedFramesPage("Nested Frames page");
-    FramesPage fp = new FramesPage("Frames");
-    ElementsPage ep = new ElementsPage("Elements page");
-    WebTablesPage wtp = new WebTablesPage("Web Tables page");
-    BrowserWindows bw = new BrowserWindows("Utils.Browser Windows page");
-    LinksPage lp = new LinksPage();
-    WidgetsPage wp = new WidgetsPage("Widgets page");
-    DatePickerPage dp = new DatePickerPage("Date Picker page");
 
-    public Testing() throws IOException {
+    HomePage hp = new HomePage();
+    AlertsFrameWindowsPage afwp = new AlertsFrameWindowsPage();
+    AlertsPage ap = new AlertsPage();
+    NestedFramesPage nf = new NestedFramesPage();
+    FramesPage fp = new FramesPage();
+    BrowserWindows bw = new BrowserWindows();
+    LinksPage lp = new LinksPage();
+    WidgetsPage wp = new WidgetsPage();
+    DatePickerPage dp = new DatePickerPage();
+
+    public Testing() {
     }
 
     @BeforeTest
@@ -48,7 +45,7 @@ public class Testing {
 
     }
 
-    @Test(priority = 1, description = "Test1", enabled = true)//Test case 1. Utils.Alerts
+    @Test(priority = 1, description = "Test1", enabled = true)//Test case 1. Alerts
     public void Alerts() throws IOException {
 
         LoggerTest.log(Level.INFO, "1st test is starting");

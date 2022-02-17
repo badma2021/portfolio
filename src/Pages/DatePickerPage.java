@@ -15,8 +15,8 @@ public class DatePickerPage extends BaseForm {
     private final String locatorSelectMonth = "//select[contains(@class,'month')]";
     private final String locatorDatePickers = "//*[@id='item-2']/span[contains(text(),'Picker')]";
 
-    public DatePickerPage(String name) {
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Picker')]"), name), name);
+    public DatePickerPage() {
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Picker')]"), "Main header of Date Pickers page"), "Date Pickers page");
     }
 
     Actions builder = new Actions(Driver.getInstance());

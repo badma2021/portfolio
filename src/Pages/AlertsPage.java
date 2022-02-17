@@ -23,15 +23,15 @@ public class AlertsPage extends BaseForm {
     private final String locatorYouEntered = "//*[@id='promptResult']";
 
 
-    public AlertsPage(String name) {
+    public AlertsPage() {
 
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), name), name);
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), "Main header of Alerts page"), "Alerts page");
     }
 
     Actions builder = new Actions(Driver.getInstance());
     AlertsUtil alert = new AlertsUtil();
     private MenuForm mf = new MenuForm("Left hand side base menu");
-    private TextField tFAlertsPage = new TextField(By.xpath(locatorAlertsHeader), "Main header of Utils.Alerts page");
+    private TextField tFAlertsPage = new TextField(By.xpath(locatorAlertsHeader), "Main header of Alerts page");
     private TextField tFYouSelectedOK = new TextField(By.xpath(locatorYouSelectedOk), "Label along confirm box after pushing");
     private TextField tFYouEntered = new TextField(By.xpath(locatorYouEntered), "Label along prompt box after pushing");
     private Button btToSeeAlert = new Button(By.xpath(locatorToSeeAlertButton), "Click button to see alert");
@@ -53,7 +53,6 @@ public class AlertsPage extends BaseForm {
         return tFAlertsPage.isDisplayed();
 
     }
-
 
     public void clickToSeeAlertButton() {
 

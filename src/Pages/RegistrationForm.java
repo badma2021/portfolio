@@ -20,9 +20,9 @@ public class RegistrationForm extends BaseForm {
     private final String locatorSubmitButton="//*[@id='submit']";
 
 
-    public RegistrationForm(String name) {
+    public RegistrationForm() {
 
-        super(new TextField(By.xpath("//*[@id='registration-form-modal']"), name), name);
+        super(new TextField(By.xpath("//*[@id='registration-form-modal']"), "Textfield Registration Form"), "Registration Form");
     }
     Actions builder = new Actions(Driver.getInstance());
     private TextField tFRegistrationForm = new TextField(By.xpath(locatorRegistrationFormHeader), "Textfield Registration Form");

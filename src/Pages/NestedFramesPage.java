@@ -7,14 +7,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import java.io.IOException;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class NestedFramesPage extends BaseForm {
 
-    public NestedFramesPage(String name) {
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), name), name);
+    public NestedFramesPage() {
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Nested')]"), "Main header of Nested Frames page"), "Nested Frames page");
     }
 
     private final String locatorNestedFramesHeader = "//div[@class='main-header'][contains(text(),'Nested')]";

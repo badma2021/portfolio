@@ -24,11 +24,11 @@ public class Testing_Data_provider {
     @Test(dataProvider = "registration data")
     public void userRegistration(String UserNumber,String FirstName,String LastName, String Email, String Age, String Salary, String Department) throws Exception
     {
-        HomePage hp = new HomePage("Main page");
-        ElementsPage ep = new ElementsPage("Elements page");
-        WebTablesPage wtp = new WebTablesPage("Web Tables page");
-        BrowserWindows bw = new BrowserWindows("Utils.Browser Windows page");
-        RegistrationForm rf = new RegistrationForm("Registration form");
+        HomePage hp = new HomePage();
+        ElementsPage ep = new ElementsPage();
+        WebTablesPage wtp = new WebTablesPage();
+        BrowserWindows bw = new BrowserWindows();
+        RegistrationForm rf = new RegistrationForm();
         LoggerTest.log(Level.INFO,"3d test is starting");
         Driver.getInstance().manage().window().maximize();
         Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1

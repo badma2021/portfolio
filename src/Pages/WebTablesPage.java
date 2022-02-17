@@ -20,12 +20,12 @@ public class WebTablesPage extends BaseForm {
     private String locatorUserAdded = "//div[@class='rt-tr-group'][" + ConfigReader.util().getString("user_number") + "]";
     private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Alerts')]";
 
-    public WebTablesPage(String name) throws IOException {
+    public WebTablesPage() throws IOException {
 
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), name), name);
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), "Main header of Web Tables page"), "Web Tables Page");
     }
 
-    private RegistrationForm rf = new RegistrationForm("Registration form");
+    private RegistrationForm rf = new RegistrationForm();
     Actions builder = new Actions(Driver.getInstance());
     private TextField tFWebTablesPage = new TextField(By.xpath(locatorWebTablesHeader), "Main header of Web Tables page");
     private Button btAdd = new Button(By.xpath(locatorAddButton), "Add");

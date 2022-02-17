@@ -15,8 +15,8 @@ public class HomePage extends BaseForm {
     private final String locatorElements = "//div[@class='card mt-4 top-card'][1]";
     private final String locatorWidgets="//div[@class='card mt-4 top-card'][4]";
 
-    public HomePage(String name) {
-        super(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), name);
+    public HomePage() {
+        super(new TextField(By.xpath("//*[@id='app']/header/a/img"), "Main header of home page of DemoQA"), "Home page");
     }
 
     Actions builder = new Actions(Driver.getInstance());
