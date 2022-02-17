@@ -13,20 +13,20 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 
 public class FramesPage extends BaseForm {
 
-    private String locatorFramesHeader = "//div[@class='main-header'][contains(text(),'Frames')]";
-    private String locatorIframe1TextField = "//*[@id='frame1']";
-    private String locatorIframe1TextFieldText = "//*[@id='sampleHeading']";
-    private String locatorIframe2TextField = "//*[@id='frame2']";
+    private final String locatorFramesHeader = "//div[@class='main-header'][contains(text(),'Frames')]";
+    private final String locatorIframe1TextField = "//*[@id='frame1']";
+    private final String locatorIframe1TextFieldText = "//*[@id='sampleHeading']";
+    private final String locatorIframe2TextField = "//*[@id='frame2']";
 
 
     public FramesPage(String name) {
 
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), name), name);
     }
-    MenuForm mf = new MenuForm("Left hand side base menu");
+    private MenuForm mf = new MenuForm("Left hand side base menu");
     Actions builder = new Actions(Driver.getInstance());
-    TextField tFFramesPage = new TextField(By.xpath(locatorFramesHeader), "Main header of Frames page");
-    TextField ifIframe1TextFieldText = new TextField(By.xpath(locatorIframe1TextFieldText), "1st Iframe internal text in Frames page");
+    private TextField tFFramesPage = new TextField(By.xpath(locatorFramesHeader), "Main header of Frames page");
+    private TextField ifIframe1TextFieldText = new TextField(By.xpath(locatorIframe1TextFieldText), "1st Iframe internal text in Frames page");
 
 
     public boolean appearTextFieldFramesPage(){
@@ -49,7 +49,7 @@ public class FramesPage extends BaseForm {
     }
 
 
-    public String getIframeText2FramesPage() throws IOException {
+    public String getIframeText2FramesPage() {
 
         WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMovetoMenuAlerts()));
         builder.moveToElement(element).build().perform();

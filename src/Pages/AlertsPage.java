@@ -2,8 +2,7 @@ package Pages;
 
 import Elements.Button;
 import Elements.TextField;
-import Pages.BaseForm;
-import Utils.Alerts;
+import Utils.AlertsUtil;
 import Utils.ConfigReader;
 import Utils.Driver;
 import Utils.WaitUtils;
@@ -16,45 +15,41 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.IOException;
 
 public class AlertsPage extends BaseForm {
-    private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Utils.Alerts')]";
-    private String locatorToSeeAlertButton = "//*[@id='alertButton']";
-    private String locatorConfirmBoxButton = "//*[@id='confirmButton']";
-    private String locatorYouSelectedOk = "//*[@id='confirmResult']";
-    private String locatorPromptBoxButton = "//*[@id='promtButton']";
-    private String locatorYouEntered = "//*[@id='promptResult']";
+    private final String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Alerts')]";
+    private final String locatorToSeeAlertButton = "//*[@id='alertButton']";
+    private final String locatorConfirmBoxButton = "//*[@id='confirmButton']";
+    private final String locatorYouSelectedOk = "//*[@id='confirmResult']";
+    private final String locatorPromptBoxButton = "//*[@id='promtButton']";
+    private final String locatorYouEntered = "//*[@id='promptResult']";
 
 
     public AlertsPage(String name) {
 
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Utils.Alerts')]"), name), name);
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Alerts')]"), name), name);
     }
 
     Actions builder = new Actions(Driver.getInstance());
-    Alerts alert = new Alerts();
-    MenuForm mf=new MenuForm("Left hand side base menu");
-    TextField tFAlertsPage = new TextField(By.xpath(locatorAlertsHeader), "Main header of Utils.Alerts page");
-    TextField tFYouSelectedOK = new TextField(By.xpath(locatorYouSelectedOk), "Label along confirm box after pushing");
-    TextField tFYouEntered = new TextField(By.xpath(locatorYouEntered), "Label along prompt box after pushing");
-    Button btToSeeAlert = new Button(By.xpath(locatorToSeeAlertButton), "Click button to see alert");
-    Button btConfirmBox = new Button(By.xpath(locatorConfirmBoxButton), "On button click, confirm box will appear");
-    Button btPromptBox = new Button(By.xpath(locatorPromptBoxButton), "On button click, prompt box will appear");
+    AlertsUtil alert = new AlertsUtil();
+    private MenuForm mf = new MenuForm("Left hand side base menu");
+    private TextField tFAlertsPage = new TextField(By.xpath(locatorAlertsHeader), "Main header of Utils.Alerts page");
+    private TextField tFYouSelectedOK = new TextField(By.xpath(locatorYouSelectedOk), "Label along confirm box after pushing");
+    private TextField tFYouEntered = new TextField(By.xpath(locatorYouEntered), "Label along prompt box after pushing");
+    private Button btToSeeAlert = new Button(By.xpath(locatorToSeeAlertButton), "Click button to see alert");
+    private Button btConfirmBox = new Button(By.xpath(locatorConfirmBoxButton), "On button click, confirm box will appear");
+    private Button btPromptBox = new Button(By.xpath(locatorPromptBoxButton), "On button click, prompt box will appear");
 
-    public boolean appearTextFieldYouSelectedOK()  {
-        return tFYouSelectedOK.isDisplayed();
 
-    }
-
-    public String getTextFieldYouSelectedOK()  {
+    public String getTextFieldYouSelectedOK() {
         return tFYouSelectedOK.getText();
 
     }
 
-    public String getTextFieldYouEntered()  {
+    public String getTextFieldYouEntered() {
         return tFYouEntered.getText().substring(12, tFYouEntered.getText().length());
 
     }
 
-    public boolean appearTextFieldAlertsPage()  {
+    public boolean appearTextFieldAlertsPage() {
         return tFAlertsPage.isDisplayed();
 
     }
@@ -76,7 +71,7 @@ public class AlertsPage extends BaseForm {
         }
     }
 
-    public String APgetAlertsText()  {
+    public String APgetAlertsText() {
 
 
         return alert.getAlertText();
@@ -87,14 +82,14 @@ public class AlertsPage extends BaseForm {
 
     }
 
-    public void clickConfirmBoxButton()  {
+    public void clickConfirmBoxButton() {
 
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorConfirmBoxButton));
         builder.moveToElement(element).build().perform();
         btConfirmBox.click();
     }
 
-    public void clickPromptBoxButton() throws IOException {
+    public void clickPromptBoxButton() {
 
         WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMenuAlerts()));
         builder.moveToElement(element).build().perform();

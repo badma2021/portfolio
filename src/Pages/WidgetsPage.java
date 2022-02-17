@@ -10,11 +10,9 @@ public class WidgetsPage extends BaseForm {
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Widgets')]"), name), name);
     }
 
-    MenuForm mf = new MenuForm("Left hand side base menu");
-
+    private MenuForm mf = new MenuForm("Left hand side base menu");
 
     public void clickTextDatePicker() {
-
         mf.clickTextDatePicker();
     }
 

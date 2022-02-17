@@ -35,7 +35,7 @@ public class Testing {
     ElementsPage ep = new ElementsPage("Elements page");
     WebTablesPage wtp = new WebTablesPage("Web Tables page");
     BrowserWindows bw = new BrowserWindows("Utils.Browser Windows page");
-    LinksPage lp = new LinksPage("Links page");
+    LinksPage lp = new LinksPage();
     WidgetsPage wp = new WidgetsPage("Widgets page");
     DatePickerPage dp = new DatePickerPage("Date Picker page");
 
@@ -56,9 +56,9 @@ public class Testing {
         Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
 
         hp.clickTextFieldAlertsFrameWindows();//Шаг2
-        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: Pages.AlertsFrameWindowsPage page is not open");
+        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: AlertsFrameWindowsPage page is not open");
         afwp.clickMenuAlerts();
-        Assert.assertTrue((ap.appearTextFieldAlertsPage()), "Verification Failed: Utils.Alerts page is not open");
+        Assert.assertTrue((ap.appearTextFieldAlertsPage()), "Verification Failed: Alerts page is not open");
 
         ap.clickToSeeAlertButton();//Шаг3
         Assert.assertTrue(ap.APgetAlertsText().equals(ConfigReader.util().getString("first_alert")), "Verification Failed: There is no any alert with label 'You clicked a button'");
@@ -89,7 +89,7 @@ public class Testing {
         Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
         Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
         hp.clickTextFieldAlertsFrameWindows();//Шаг2
-        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: Pages.AlertsFrameWindowsPage page is not open");
+        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: AlertsFrameWindowsPage page is not open");
         afwp.clickMenuNestedFrames();
         Assert.assertTrue((nf.appearTextFieldNestedFramesPage()), "Verification Failed: Nested Frames page is not open");
         Assert.assertTrue(nf.getIframeText().equals(nf.labelIframeInternalText), "Verification Failed: There are no 'Parent frame' and 'Child Frame' labels inside Iframes");
@@ -105,9 +105,9 @@ public class Testing {
         Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
         Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
         hp.clickTextFieldAlertsFrameWindows();//Шаг2
-        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: Pages.AlertsFrameWindowsPage page is not open");
+        Assert.assertTrue((afwp.getTextFieldAlertsFrameWindowsPage()), "Verification Failed: AlertsFrameWindowsPage page is not open");
         afwp.clickMenuBrowserWindows();
-        Assert.assertTrue((bw.appearTfBrowserWindowsPage()), "Verification Failed: Utils.Browser Windows page is not open");
+        Assert.assertTrue((bw.appearTfBrowserWindowsPage()), "Verification Failed: Browser Windows page is not open");
         bw.clickNewTabButton();//Шаг3
         String base = Driver.getInstance().getWindowHandle();
         List<String> browserTabs = new ArrayList<String>(Driver.getInstance().getWindowHandles());
@@ -116,7 +116,7 @@ public class Testing {
         Assert.assertTrue(bw.appearSamplePageHeader().equals(ConfigReader.util().getString("new_tab")));
         Driver.getInstance().close();
         Driver.getInstance().switchTo().window(base);
-        Assert.assertTrue((bw.appearTfBrowserWindowsPage()), "Verification Failed: Utils.Browser Windows page is not open");//Шаг4
+        Assert.assertTrue((bw.appearTfBrowserWindowsPage()), "Verification Failed: Browser Windows page is not open");//Шаг4
 
         bw.clickMenuElements();//Шаг5
         bw.clickMenuElementsLinks();
@@ -157,7 +157,7 @@ public class Testing {
         dp.clickSelectMonth();
 
         dp.clicktf29number();
-        Assert.assertTrue(ConfigReader.util().getString("expected_date").equals(dp.getInputFirstDate1()), "Verification Failed: the date which you set does not meet with the expected date");
+        Assert.assertTrue(ConfigReader.util().getString("expected_date").equals(dp.getInputFirstDate1()), "Verification Failed: the date which you set does not match with the expected date");
 
 
     }

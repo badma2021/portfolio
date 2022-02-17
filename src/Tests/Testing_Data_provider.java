@@ -17,7 +17,7 @@ public class Testing_Data_provider {
     @DataProvider(name = "registration data")
     public Object[][] passData() throws IOException, ParseException {
 
-        return JSON_Reader.getData("C:/Users/Observer/IdeaProjects/Demoqa/src/Testing_data.json", "Registration data", 7);
+        return JSON_Reader.getData("src/Tests/Testing_data.json", "Registration data", 7);
         //return null;
     }
 
@@ -53,8 +53,6 @@ public class Testing_Data_provider {
         rf.clickSubmitButton();
         LoggerTest.log(Level.INFO,"Getting new user info from the table of the site " + wtp.getRowTextFromNewUser());
         LoggerTest.log(Level.INFO,"Reading from JSON the following data " + FirstName+LastName+Age+Email+Salary+Department);
-//        System.out.println(wtp.getRowTextFromNewUser());
-//        System.out.println(FirstName+LastName+Age+Email+Salary+Department);
         Assert.assertEquals(wtp.getRowTextFromNewUser(),FirstName+LastName+Age+Email+Salary+Department,"Verification Failed:New User data does not equal to which appeared in the table");
         wtp.clickRemoveUserButton();
         System.out.println(wtp.appearTextFieldAddedUser());

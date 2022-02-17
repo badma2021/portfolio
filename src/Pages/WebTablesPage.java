@@ -18,20 +18,19 @@ public class WebTablesPage extends BaseForm {
     private String locatorUserForDelete="//*[@id='delete-record-4']";
     private String locatorButtonsMenu = "//*[@id='item-4']/span[contains(text(),'Buttons')]";
     private String locatorUserAdded = "//div[@class='rt-tr-group'][" + ConfigReader.util().getString("user_number") + "]";
-
-    private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Utils.Alerts')]";
+    private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Alerts')]";
 
     public WebTablesPage(String name) throws IOException {
 
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Tables')]"), name), name);
     }
 
-    RegistrationForm rf = new RegistrationForm("Registration form");
+    private RegistrationForm rf = new RegistrationForm("Registration form");
     Actions builder = new Actions(Driver.getInstance());
-    TextField tFWebTablesPage = new TextField(By.xpath(locatorWebTablesHeader), "Main header of Web Tables page");
-    Button btAdd = new Button(By.xpath(locatorAddButton), "Add");
-    TextField tableAdd = new TextField(By.xpath(locatorUserAdded), "New User row in the table");
-    TextField tfRemoveUser = new TextField(By.xpath(locatorUserForDelete), "Basket sign for removing any user in the table");
+    private TextField tFWebTablesPage = new TextField(By.xpath(locatorWebTablesHeader), "Main header of Web Tables page");
+    private Button btAdd = new Button(By.xpath(locatorAddButton), "Add");
+    private TextField tableAdd = new TextField(By.xpath(locatorUserAdded), "New User row in the table");
+    private TextField tfRemoveUser = new TextField(By.xpath(locatorUserForDelete), "Basket sign for removing any user in the table");
 
 
 
@@ -39,8 +38,6 @@ public class WebTablesPage extends BaseForm {
         return tFWebTablesPage.isDisplayed();
 
     }
-
-
 
     public void clickAddButton() {
 
@@ -53,7 +50,7 @@ public class WebTablesPage extends BaseForm {
         return rf.appearTextFieldRegistrationForm();
     }
 
-    public String getRowTextFromNewUser() throws IOException {
+    public String getRowTextFromNewUser() {
         return tableAdd.cleanText();
 
     }

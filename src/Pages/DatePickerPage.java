@@ -20,11 +20,11 @@ public class DatePickerPage extends BaseForm {
     }
 
     Actions builder = new Actions(Driver.getInstance());
-    TextField tfDateInput1 = new TextField(By.xpath(locatorDateInput1), "First textfield for date input");
-    TextField tfDateInput2 = new TextField(By.xpath(locatorDateInput2), "Second textfield for date input");
-    Select sYear = new Select(By.xpath(locatorSelectYear), "Year tick");
-    Select sMonth = new Select(By.xpath(locatorSelectMonth), "Month tick");
-    TextField tflocator29number = new TextField(By.xpath(locator29number), " 29 day of month");
+    private TextField tfDateInput1 = new TextField(By.xpath(locatorDateInput1), "First textfield for date input");
+    private TextField tfDateInput2 = new TextField(By.xpath(locatorDateInput2), "Second textfield for date input");
+    private Select sYear = new Select(By.xpath(locatorSelectYear), "Year tick");
+    private Select sMonth = new Select(By.xpath(locatorSelectMonth), "Month tick");
+    private TextField tflocator29number = new TextField(By.xpath(locator29number), " 29 day of month");
 
 
 
@@ -34,6 +34,8 @@ public class DatePickerPage extends BaseForm {
     }
 
     public void clickInputFirstDate1() {
+        WebElement element = Driver.getInstance().findElement(By.xpath(locatorDatePickers));
+        builder.moveToElement(element).build().perform();
         tfDateInput1.click();
 
     }
@@ -44,6 +46,8 @@ public class DatePickerPage extends BaseForm {
     }
 
     public void clickSelectYear() {
+        WebElement element = Driver.getInstance().findElement(By.xpath(locatorSelectYear));
+        builder.moveToElement(element).build().perform();
         sYear.click();
     }
 
@@ -63,8 +67,6 @@ public class DatePickerPage extends BaseForm {
         WebElement element = Driver.getInstance().findElement(By.xpath(locatorDatePickers));
         builder.moveToElement(element).build().perform();
         tflocator29number.click();
-
     }
-
 }
 

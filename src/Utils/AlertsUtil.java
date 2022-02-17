@@ -1,11 +1,9 @@
 package Utils;
 
-import Utils.Driver;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 
-public class Alerts {
-    private Alert alert;
+public class AlertsUtil {
 
     public boolean isAlertPresent() {
         try {

@@ -15,8 +15,8 @@ public class AlertsFrameWindowsPage extends BaseForm {
         super(new TextField(By.xpath("//div[@class='main-header']"), name), name);
     }
 
-    TextField tFAlertsFrameWindowsPage = new TextField(By.xpath(locatorAlertsFrameWindowsHeader), "Main header of Utils.Alerts&Frame&Windows page");
-    MenuForm mf = new MenuForm("Left hand side base menu");
+    private TextField tFAlertsFrameWindowsPage = new TextField(By.xpath(locatorAlertsFrameWindowsHeader), "Main header of Alerts&Frame&Windows page");
+    private MenuForm mf = new MenuForm("Left hand side base menu");
 
     public boolean getTextFieldAlertsFrameWindowsPage() throws IOException {
         return tFAlertsFrameWindowsPage.isDisplayed();
