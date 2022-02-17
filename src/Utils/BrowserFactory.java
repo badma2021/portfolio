@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +34,8 @@ public class BrowserFactory {
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions options = new ChromeOptions();
                         options.addArguments(ConfigReader.util().getString("mode"));
+                        options.setExperimentalOption(ConfigReader.util().getString("infobars"),false);
+                        options.setExperimentalOption(ConfigReader.util().getString("infobars1"), Collections.singletonList(ConfigReader.util().getString("infobars2")));
                         driver = new ChromeDriver(options);
 
                         drivers.put("Chrome", driver);

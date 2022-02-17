@@ -2,6 +2,9 @@
   "base_Url": "https://demoqa.com/",
   "timeout": "15",
   "mode": "incognito",
+  "infobars": "useAutomationExtension",
+  "infobars1": "excludeSwitches",
+  "infobars2":"enable-automation",
   "first_alert": "You clicked a button",
   "second_alert": "Do you confirm action?",
   "third_alert": "You selected Ok",
@@ -12,7 +15,6 @@
   "new_tab": "This is a sample page",
   "date_picker_year": "2024",
   "date_picker_month": "February",
-  "datepicker": "March",
   "date_picker_number": "29",
-  "date_picker_date": "02/29/2024"
+  "expected_date":"02/29/2024"
 }

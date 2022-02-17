@@ -5,6 +5,7 @@ import Pages.*;
 import Utils.ConfigReader;
 import Utils.Driver;
 import Utils.LoggerTest;
+import org.apache.hc.core5.http.io.SessionOutputBuffer;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -15,8 +16,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class Testing {
@@ -32,7 +37,7 @@ public class Testing {
     BrowserWindows bw = new BrowserWindows("Utils.Browser Windows page");
     LinksPage lp = new LinksPage("Links page");
     WidgetsPage wp = new WidgetsPage("Widgets page");
-    DatePickerPage dp= new DatePickerPage("Date Picker page");
+    DatePickerPage dp = new DatePickerPage("Date Picker page");
 
     public Testing() throws IOException {
     }
@@ -126,27 +131,34 @@ public class Testing {
     }
 
     @Test(priority = 5, description = "Test5", enabled = true)
-    public void Date_Picker() throws IOException, InterruptedException {
+    public void Date_Picker() throws IOException {
         LoggerTest.log(Level.INFO, "5th test is starting");
         Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
         Assert.assertTrue((hp.getTextFieldHeaderHomepage()), "Home page is not open");
         hp.clickTextFieldWidgets();
         wp.clickTextDatePicker();
 
-        dp.getInputFirstDate(ConfigReader.util().getString("date_picker_date"));
-        dp.clicktfDateInput2();
+        Date date = new Date();
+        DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String today = formatter.format(date);
+        Assert.assertTrue(dp.getInputFirstDate1().equals(today), "Verification Failed: First date does not equal to current");
+        formatter = new SimpleDateFormat("MMMM dd, yyyy h:mm aa", Locale.ENGLISH);
+        String today1 = formatter.format(date);
+        Assert.assertTrue(dp.getInputFirstDate2().equals(today1), "Verification Failed: Second date does not equal to current");
 
-        dp.clicktfDateInput21();
-        dp.clicktfAnyMonth();
-        dp.clicktfCalendarYearTriangle();
-        dp.clicktf2024Year();
+        dp.clickInputFirstDate1();
+
+        dp.clickSelectYear();
+        dp.selectYear(ConfigReader.util().getString("date_picker_year"));
+        dp.clickSelectYear();
+
+        dp.clickSelectMonth();
+        dp.selectMonth(ConfigReader.util().getString("date_picker_month"));
+        dp.clickSelectMonth();
+
         dp.clicktf29number();
-       // dp.selectDate(29);
-       // WebElement st = Driver.getInstance().findElement(By.xpath("//*[@id='dateAndTimePicker']//span[@class='react-datepicker__month-read-view--down-arrow']"));
-     // dp.selectDate(ConfigReader.util().getString("datepicker")); //st.sendKeys(ConfigReader.util().getString("datepicker"));
-    //(ConfigReader.util().getString("datepicker"));
-        // dp.clicktfDateInput3(ConfigReader.util().getString("datepicker"));
-        //dp.selectDate();
+        Assert.assertTrue(ConfigReader.util().getString("expected_date").equals(dp.getInputFirstDate1()), "Verification Failed: the date which you set does not meet with the expected date");
+
 
     }
     //   @AfterTest

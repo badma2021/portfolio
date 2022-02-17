@@ -15,10 +15,6 @@ public abstract class BaseElement {
 
     }
 
-    public BaseElement() {
-
-    }
-
     boolean isDisplayed() {
         return false;
     }
