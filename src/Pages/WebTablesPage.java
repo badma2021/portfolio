@@ -7,8 +7,6 @@ import java.io.IOException;
 
 public class WebTablesPage extends BaseForm {
 
-
-    private String locatorWebTablesHeader = "//div[@class='main-header'][contains(text(),'Tables')]";
     private String locatorAddButton = "//*[@id='addNewRecordButton']";
     private String locatorUserForDelete="//*[@id='delete-record-4']";
     private String locatorUserAdded = "//div[@class='rt-tr-group'][" + ConfigReader.util().getString("user_number") + "]";

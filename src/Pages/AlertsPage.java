@@ -84,8 +84,12 @@ public class AlertsPage extends BaseForm {
         btPromptBox.click();
     }
 
-    public void sendTextPromptBox() throws IOException {
-        alert.sendText(ConfigReader.util().getString("input1"));
+    public void sendTextPromptBox() {
+        try {
+            alert.sendText(ConfigReader.util().getString("input1"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 }
