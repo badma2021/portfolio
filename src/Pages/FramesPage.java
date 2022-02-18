@@ -7,17 +7,14 @@ import Utils.WaitUtils;
 import org.apache.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class FramesPage extends BaseForm {
 
-    private final String locatorFramesHeader = "//div[@class='main-header'][contains(text(),'Frames')]";
     private final String locatorIframe1TextField = "//*[@id='frame1']";
     private final String locatorIframe1TextFieldText = "//*[@id='sampleHeading']";
     private final String locatorIframe2TextField = "//*[@id='frame2']";
-
 
     public FramesPage() {
 
@@ -40,7 +37,6 @@ public class FramesPage extends BaseForm {
         return p;
 
     }
-
 
     public String getIframeText2FramesPage() {
 

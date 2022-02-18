@@ -2,13 +2,7 @@ package Pages;
 
 import Elements.Select;
 import Elements.TextField;
-import Utils.DateFormatter;
-import Utils.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
-import java.util.Locale;
 
 public class DatePickerPage extends BaseForm {
 
@@ -17,7 +11,6 @@ public class DatePickerPage extends BaseForm {
     private final String locator29number = "//*[@role='listbox']/div/div[contains(@aria-label,'February 29th')]";
     private final String locatorSelectYear = "//select[contains(@class,'year')]";
     private final String locatorSelectMonth = "//select[contains(@class,'month')]";
-    private final String locatorDatePickers = "//*[@id='item-2']/span[contains(text(),'Picker')]";
 
     public DatePickerPage() {
         super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Picker')]"), "Main header of Date Pickers page"), "Date Pickers page");

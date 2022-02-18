@@ -10,12 +10,8 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class Testing extends BaseTest {
 
@@ -28,6 +24,12 @@ public class Testing extends BaseTest {
     LinksPage lp = new LinksPage();
     WidgetsPage wp = new WidgetsPage();
     DatePickerPage dp = new DatePickerPage();
+    ElementsPage ep = new ElementsPage();
+    WebTablesPage wtp = new WebTablesPage();
+    RegistrationForm rf = new RegistrationForm();
+
+    public Testing() throws IOException {
+    }
 
 
     @Test(priority = 1, description = "Test1", enabled = true)//Test case 1. Alerts
@@ -78,6 +80,35 @@ public class Testing extends BaseTest {
         nf.clickMenuFrames();//Шаг3
         Assert.assertTrue((fp.isDisplayed()), "Verification Failed: Nested Frames page is not open");
         Assert.assertTrue(fp.getIframeText1FramesPage().equals(fp.getIframeText2FramesPage()), "Verification Failed: Internal text from two different Iframes is not the same");
+    }
+
+    @Test(priority = 3, description = "Test3", enabled = true, dataProvider = "registration data", dataProviderClass = TestingDataProvider.class)
+    public void userRegistration(String UserNumber, String FirstName, String LastName, String Email, String Age, String Salary, String Department) {
+
+        LoggerTest.log(Level.INFO, "3d test is starting");//Шаг1
+        Assert.assertTrue((hp.isDisplayed()), "Home page is not open");
+
+        hp.clickTextFieldElements();//Шаг2
+        Assert.assertTrue((ep.isDisplayed()), "Verification Failed: Elements page is not open");
+        ep.clickMenuWebTables();
+        Assert.assertTrue((wtp.isDisplayed()), "Verification Failed: Web tables page is not open");
+
+        wtp.clickAddButton();//Шаг3
+        Assert.assertTrue((rf.isDisplayed()), "Verification Failed: Registration form did not appear");
+        rf.getFInputFirstName(FirstName);
+        rf.getFInputLastName(LastName);
+        rf.getFInputUserEmail(Email);
+        rf.getFInputAge(Age);
+        rf.getFInputSalary(Salary);
+        rf.getFInputDepartment(Department);
+        rf.clickSubmitButton();
+        LoggerTest.log(Level.INFO, "Getting new user info from the table of the site: " + wtp.getRowTextFromNewUser());
+        LoggerTest.log(Level.INFO, "Reading from JSON the following data: " + FirstName + LastName + Age + Email + Salary + Department);
+        Assert.assertEquals(wtp.getRowTextFromNewUser(), FirstName + LastName + Age + Email + Salary + Department, "Verification Failed:New User data does not equal to which appeared in the table");
+        wtp.clickRemoveUserButton();
+        LoggerTest.log(Level.INFO, "Given user was removed: " + wtp.appearTextFieldAddedUser());
+        Assert.assertTrue((wtp.appearTextFieldAddedUser()), "Verification Failed: New user is not removed");
+
     }
 
 

@@ -5,11 +5,11 @@ import org.apache.commons.lang.LocaleUtils;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class DateFormatter {
 
     private static Date date = new Date();
+
     public static String getToday(String s) {
         return new SimpleDateFormat(s).format(date);
     }

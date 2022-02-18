@@ -4,12 +4,9 @@ import Elements.Button;
 import Elements.TextField;
 import Utils.AlertsUtil;
 import Utils.ConfigReader;
-import Utils.Driver;
 import Utils.WaitUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.IOException;
@@ -48,8 +45,6 @@ public class AlertsPage extends BaseForm {
         return tFYouEntered.getText().substring(12, tFYouEntered.getText().length());
 
     }
-
-
 
     public void clickToSeeAlertButton() {
 

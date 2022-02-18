@@ -1,16 +1,10 @@
 package Pages;//import org.json.JSONObject;
 import Elements.TextField;
-import Pages.BaseForm;
-import Utils.Driver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
-import java.io.IOException;
+import org.openqa.selenium.By;
 
 public class RegistrationForm extends BaseForm {
 
-    private final String locatorRegistrationFormHeader = "//*[@id='registration-form-modal']";
     private final String locatorInputFirstName = "//*[@id='firstName']";
     private final String locatorInputLastName = "//*[@id='lastName']";
     private final String locatorInputUserEmail = "//*[@id='userEmail']";
@@ -25,7 +19,6 @@ public class RegistrationForm extends BaseForm {
         super(new TextField(By.xpath("//*[@id='registration-form-modal']"), "Textfield Registration Form"), "Registration Form");
     }
 
-    private TextField tFRegistrationForm = new TextField(By.xpath(locatorRegistrationFormHeader), "Textfield Registration Form");
     private TextField tFInputFirstName = new TextField(By.xpath(locatorInputFirstName), "Textfield First name input");
     private TextField tFInputLastName = new TextField(By.xpath(locatorInputLastName), "Textfield Last name input");
     private TextField tFInputUserEmail = new TextField(By.xpath(locatorInputUserEmail), "Textfield User email input");

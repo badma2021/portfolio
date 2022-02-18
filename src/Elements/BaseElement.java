@@ -3,11 +3,9 @@ package Elements;
 import Utils.ActionsBuilder;
 import Utils.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public abstract class BaseElement {
     protected By element;
-    protected WebDriver wait;
     protected String name;
 
     public BaseElement(By element, String name) {

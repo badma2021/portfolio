@@ -18,8 +18,6 @@ public class LoggerTest {
 
     public static void log(Level level, String msg) {
         getLogger().log(level, msg);
-      //  System.out.println(msg);
-
 
     }
 }

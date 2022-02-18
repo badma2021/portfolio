@@ -24,7 +24,6 @@ public class NestedFramesPage extends BaseForm {
 
 
     private MenuForm mf = new MenuForm();
-    private TextField tFNestedFramesPage = new TextField(By.xpath(locatorNestedFramesHeader), "Main header of Nested Frames page");
     private TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");
     private TextField iFChildNestedFramesPage = new TextField(By.xpath(locatorIframeChildText), "Child Iframe in Nested Frames page");
 
