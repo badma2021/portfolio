@@ -1,23 +1,14 @@
 package Tests;
 
-
 import Pages.*;
 import Utils.ConfigReader;
 import Utils.DateFormatter;
 import Utils.Driver;
 import Utils.LoggerTest;
-import org.apache.hc.core5.http.io.SessionOutputBuffer;
 import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
 
 public class Testing extends BaseTest {
 
@@ -43,9 +33,8 @@ public class Testing extends BaseTest {
     @Test(priority = 1, description = "Test1", enabled = true)//Test case 1. Alerts
     public void Alerts() throws IOException {
 
-        LoggerTest.log(Level.INFO, "1st test is starting");
-        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
-        LoggerTest.log(Level.INFO, "1st test is starting, Home page is displayed:" +hp.isDisplayed());
+        LoggerTest.log(Level.INFO, "1st test is starting");//Шаг1
+        LoggerTest.log(Level.INFO, "1st test is starting, Home page is displayed:" + hp.isDisplayed());
         Assert.assertTrue((hp.isDisplayed()), "Home page is not open");
 
         hp.clickTextFieldAlertsFrameWindows();//Шаг2
@@ -65,7 +54,8 @@ public class Testing extends BaseTest {
 
         ap.APacceptAlert();//Шаг6
         Assert.assertTrue(ap.getTextFieldYouSelectedOK().equals(ConfigReader.util().getString("third_alert")), "Verification Failed: No text appeared after pushing on confirm box");
-        LoggerTest.log(Level.INFO, "1st test is starting, after clicking on 'On button click, confirm box will appear' the green text appears:" +ap.getTextFieldYouSelectedOK());
+        LoggerTest.log(Level.INFO, "1st test is starting, after clicking on 'On button click, confirm box will appear' the green text appears:" + ap.getTextFieldYouSelectedOK());
+
         ap.clickPromptBoxButton();//Шаг7
         Assert.assertTrue(ap.APgetAlertsText().equals(ConfigReader.util().getString("forth_alert")), "Verification Failed: There is no any alert with label 'Please enter your name'");
 
@@ -77,29 +67,28 @@ public class Testing extends BaseTest {
 
     @Test(priority = 2, description = "Test2", enabled = true)//Test case 2. Iframe
     public void Iframe() throws IOException {
-        LoggerTest.log(Level.INFO, "2nd test is starting");
-        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
+        LoggerTest.log(Level.INFO, "2nd test is starting");//Шаг1
         Assert.assertTrue(hp.isDisplayed(), "Home page is not open");
         hp.clickTextFieldAlertsFrameWindows();//Шаг2
         Assert.assertTrue((afwp.isDisplayed()), "Verification Failed: AlertsFrameWindowsPage page is not open");
         afwp.clickMenuNestedFrames();
         Assert.assertTrue((nf.isDisplayed()), "Verification Failed: Nested Frames page is not open");
+        LoggerTest.log(Level.INFO, "2nd test is starting: Internal text from Config.json file is " + ConfigReader.util().getString("checkFrames"));
         Assert.assertTrue(nf.getIframeText().equals(ConfigReader.util().getString("checkFrames")), "Verification Failed: There are no 'Parent frame' and 'Child Frame' labels inside Iframes");
         nf.clickMenuFrames();//Шаг3
         Assert.assertTrue((fp.isDisplayed()), "Verification Failed: Nested Frames page is not open");
-        Assert.assertTrue(fp.getIframeText1FramesPage().equals(fp.getIframeText2FramesPage()), "Verification Failed: Internal text from two different Iframes is the same");
+        Assert.assertTrue(fp.getIframeText1FramesPage().equals(fp.getIframeText2FramesPage()), "Verification Failed: Internal text from two different Iframes is not the same");
     }
 
 
     @Test(priority = 4, description = "Test4", enabled = true)
     public void Handles() throws IOException {
-        LoggerTest.log(Level.INFO, "4th test is starting");
-        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
+        LoggerTest.log(Level.INFO, "4th test is starting");//Шаг1
         Assert.assertTrue((hp.isDisplayed()), "Home page is not open");
         hp.clickTextFieldAlertsFrameWindows();//Шаг2
         Assert.assertTrue((afwp.isDisplayed()), "Verification Failed: AlertsFrameWindowsPage page is not open");
         afwp.clickMenuBrowserWindows();
-        //Assert.assertTrue((bw.appearTfBrowserWindowsPage()), "Verification Failed: Browser Windows page is not open");
+        Assert.assertTrue((bw.isDisplayed()), "Verification Failed: Browser Windows page is not open");
 
         bw.clickNewTabButton();//Шаг3
         String base = Driver.getInstance().getWindowHandle();
@@ -109,7 +98,7 @@ public class Testing extends BaseTest {
         Assert.assertTrue(bw.appearSamplePageHeader().equals(ConfigReader.util().getString("new_tab")));
         Driver.getInstance().close();
         Driver.getInstance().switchTo().window(base);
-       Assert.assertTrue((bw.isDisplayed()), "Verification Failed: Browser Windows page is not open");//Шаг4
+        Assert.assertTrue((bw.isDisplayed()), "Verification Failed: Browser Windows page is not open");//Шаг4
 
         bw.clickMenuElements();//Шаг5
         bw.clickMenuElementsLinks();
@@ -120,41 +109,27 @@ public class Testing extends BaseTest {
         Driver.getInstance().switchTo().window(browserTabs.get(0));//Шаг7
         Assert.assertTrue((lp.isDisplayed()), "Links page is not displayed");
 
-
     }
 
     @Test(priority = 5, description = "Test5", enabled = true)
     public void Date_Picker() throws IOException {
-        LoggerTest.log(Level.INFO, "5th test is starting");
-        Driver.getInstance().get(ConfigReader.util().getString("base_Url"));//Шаг1
+        LoggerTest.log(Level.INFO, "5th test is starting");//Шаг1
         Assert.assertTrue(hp.isDisplayed(), "Home page is not open");
         hp.clickTextFieldWidgets();
         wp.clickTextDatePicker();
-
-//        Date date = new Date();
-//        DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-//        String today = formatter.format(date);
-        LoggerTest.log(Level.INFO, "5th test is starting: Date from the 1st field is "+dp.getInputFirstDate1()+" whereas Today formatted date1 is "+DateFormatter.getToday(ConfigReader.util().getString("dateFormat1")));
+        LoggerTest.log(Level.INFO, "5th test is starting: Date from the 1st field is " + dp.getInputFirstDate1() + " whereas Today formatted date1 is " + DateFormatter.getToday(ConfigReader.util().getString("dateFormat1")));
         Assert.assertTrue(dp.getInputFirstDate1().equals(DateFormatter.getToday(ConfigReader.util().getString("dateFormat1"))), "Verification Failed: First date does not equal to current");
-
-//        formatter = new SimpleDateFormat("MMMM dd, yyyy h:mm aa", Locale.ENGLISH);
-//        String today1 = formatter.format(date);
-        LoggerTest.log(Level.INFO, "5th test is starting: Date from the 2nd field is "+dp.getInputFirstDate2()+" whereas Today formatted date2 is "+DateFormatter.getTodayWithLocale());
+        LoggerTest.log(Level.INFO, "5th test is starting: Date from the 2nd field is " + dp.getInputFirstDate2() + " whereas Today formatted date2 is " + DateFormatter.getTodayWithLocale());
         Assert.assertTrue(dp.getInputFirstDate2().equals(DateFormatter.getTodayWithLocale()), "Verification Failed: Second date does not equal to current");
-
         dp.clickInputFirstDate1();
-
         dp.clickSelectYear();
         dp.selectYear(ConfigReader.util().getString("date_picker_year"));
         dp.clickSelectYear();
-
         dp.clickSelectMonth();
         dp.selectMonth(ConfigReader.util().getString("date_picker_month"));
         dp.clickSelectMonth();
-
         dp.clicktf29number();
         Assert.assertTrue(ConfigReader.util().getString("expected_date").equals(dp.getInputFirstDate1()), "Verification Failed: the date which you set does not match with the expected date");
-
 
     }
 

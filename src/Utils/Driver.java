@@ -1,8 +1,5 @@
 package Utils;
-
-import Utils.BrowserFactory;
 import org.openqa.selenium.*;
-
 import java.io.IOException;
 
 public class Driver {
@@ -15,7 +12,7 @@ public class Driver {
     public static WebDriver getInstance() {
         try {
             if (driver == null) {
-                driver = BrowserFactory.getBrowser("Chrome");
+                driver = BrowserFactory.getBrowser(ConfigReader.util().getString("Chrome"));
             }
 
         } catch (WebDriverException e) {

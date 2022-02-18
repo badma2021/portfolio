@@ -2,10 +2,13 @@ package Pages;
 
 import Elements.Select;
 import Elements.TextField;
+import Utils.DateFormatter;
 import Utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.Locale;
 
 public class DatePickerPage extends BaseForm {
 
@@ -39,7 +42,7 @@ public class DatePickerPage extends BaseForm {
     }
 
     public String getInputFirstDate2() {
-        return tfDateInput2.getAttribute();
+        return tfDateInput2.getAttribute().toLowerCase();
 
     }
 

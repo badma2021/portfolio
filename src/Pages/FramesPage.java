@@ -2,7 +2,9 @@ package Pages;
 
 import Elements.TextField;
 import Utils.Driver;
+import Utils.LoggerTest;
 import Utils.WaitUtils;
+import org.apache.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -23,22 +25,16 @@ public class FramesPage extends BaseForm {
     }
 
     private MenuForm mf = new MenuForm();
-    private TextField tFFramesPage = new TextField(By.xpath(locatorFramesHeader), "Main header of Frames page");
     private TextField ifIframe1TextFieldText = new TextField(By.xpath(locatorIframe1TextFieldText), "1st Iframe internal text in Frames page");
 
-
-    public boolean appearTextFieldFramesPage() {
-        return tFFramesPage.isDisplayed();
-
-    }
 
     public String getIframeText1FramesPage() {
 
         mf.moveToMenuNestedFrames();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe1TextField)));
         Driver.getInstance().switchTo().frame(webIframe);
+        LoggerTest.log(Level.INFO, "2nd test is starting: Internal text from Frame1 is " + ifIframe1TextFieldText.getText());
         String p = ifIframe1TextFieldText.getText();
-
         Driver.getInstance().switchTo().defaultContent();
 
         return p;
@@ -51,6 +47,7 @@ public class FramesPage extends BaseForm {
         mf.moveToMenuNestedFrames();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe2TextField)));
         Driver.getInstance().switchTo().frame(webIframe);
+        LoggerTest.log(Level.INFO, "2nd test is starting: Internal text from Frame2 is " + ifIframe1TextFieldText.getText());
         String c = ifIframe1TextFieldText.getText();
 
         Driver.getInstance().switchTo().defaultContent();

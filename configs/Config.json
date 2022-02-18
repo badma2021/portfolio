@@ -2,6 +2,8 @@
   "base_Url": "https://demoqa.com/",
   "timeout": "15",
   "mode": "incognito",
+  "Firefox": "Firefox",
+  "Chrome": "Chrome",
   "infobars": "useAutomationExtension",
   "infobars1": "excludeSwitches",
   "infobars2":"enable-automation",
@@ -20,5 +22,5 @@
   "expected_date":"02/29/2024",
   "dateFormat1": "MM/dd/yyyy",
   "dateFormat2": "MMMM dd, yyyy h:mm aa",
-  "LocaleEnglish":"ENGLISH"
+  "LocaleEnglish":"en_GB"
 }

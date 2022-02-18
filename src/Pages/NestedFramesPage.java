@@ -2,7 +2,9 @@ package Pages;
 
 import Elements.TextField;
 import Utils.Driver;
+import Utils.LoggerTest;
 import Utils.WaitUtils;
+import org.apache.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -26,18 +28,16 @@ public class NestedFramesPage extends BaseForm {
     private TextField ifParentNestedFramesPage = new TextField(By.xpath(locatorIframeParentText), "Parent frame in Nested Frames page");
     private TextField iFChildNestedFramesPage = new TextField(By.xpath(locatorIframeChildText), "Child Iframe in Nested Frames page");
 
-    public boolean appearTextFieldNestedFramesPage()  {
-        return tFNestedFramesPage.isDisplayed();
-
-    }
 
     public String getIframeText() {
 
         mf.moveToMenuNestedFrames();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe)));
         Driver.getInstance().switchTo().frame(webIframe);
+        LoggerTest.log(Level.INFO, "2nd test is starting: Internal text from Parent Frame is " + ifParentNestedFramesPage.getText());
         String p = ifParentNestedFramesPage.getText();
         Driver.getInstance().switchTo().frame(0);
+        LoggerTest.log(Level.INFO, "2nd test is starting: Internal text from Child IFrame is " + iFChildNestedFramesPage.getText());
         String c = iFChildNestedFramesPage.getText();
         Driver.getInstance().switchTo().defaultContent();
         return (p + " " + c);
