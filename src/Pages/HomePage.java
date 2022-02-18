@@ -26,10 +26,6 @@ public class HomePage extends BaseForm {
     private TextField tFWidgets = new TextField(By.xpath(locatorWidgets), "Widgets");
     private TextField tFMovetoAlertsFrameWindows = new TextField(By.xpath(locatorMovetoAlertsFrameWindows), "to move to AlertsFrameWindows");
 
-    public boolean getTextFieldHeaderHomepage() {
-        return tFHeaderHomepage.isDisplayed();
-
-    }
 
     public void clickTextFieldAlertsFrameWindows() {
 

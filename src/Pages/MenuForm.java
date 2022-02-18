@@ -1,12 +1,7 @@
 package Pages;
 
 import Elements.TextField;
-import Pages.BaseForm;
-import Utils.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 public class MenuForm extends BaseForm {
 
     private final String locatorMenuAlerts = "//*[@id='item-1']/span[contains(text(),'Alerts')]";
@@ -20,6 +15,7 @@ public class MenuForm extends BaseForm {
     private final String locatorMenuElementsLinks = "//*[@id='item-5']/span[contains(text(),'Links')]";
     private final String locatorDatePickers = "//*[@id='item-2']/span[contains(text(),'Picker')]";
     private final String locatorToolTips = "//*[@id='item-6']/span[contains(text(),'Tips')]";
+    private final String locatorButtonsMenu = "//*[@id='item-4']/span[contains(text(),'Buttons')]";
 
     protected MenuForm() {
 
@@ -37,7 +33,7 @@ public class MenuForm extends BaseForm {
     private TextField tFMovetoMenuNestedFrames = new TextField(By.xpath(locatorMovetoMenuNestedFrames), "TextField Widgets on the menu");
     private TextField tFMovetoMenuButtons = new TextField(By.xpath(locatorMovetoMenuButtons), "Textfield Buttons on the menu");
     private TextField tFMovetoToolTips = new TextField(By.xpath(locatorToolTips), "Textfield Tool Tips on the menu");
-
+    private TextField tFButtonsMenu = new TextField(By.xpath(locatorButtonsMenu), "Textfield Buttons on the menu");
 
     public void clickMenuAlerts() {
         tFMenuNestedFrames.moveTo();
@@ -47,10 +43,6 @@ public class MenuForm extends BaseForm {
     public void clickMenuNestedFrames() {
         tFMovetoMenuNestedFrames.moveTo();
         tFMenuNestedFrames.click();
-    }
-
-    public String getLocatorMovetoMenuAlerts() {
-        return locatorMovetoMenuAlerts;
     }
 
     public void clickMenuFrames() {
@@ -80,9 +72,7 @@ public class MenuForm extends BaseForm {
     }
 
     public void clickTextDatePicker() {
-
         tFMovetoToolTips.moveTo();
-
         tfDatePickers.click();
     }
 
@@ -91,5 +81,12 @@ public class MenuForm extends BaseForm {
     }
     public void moveToDatePickers() {
         tfDatePickers.moveTo();
+    }
+
+    public void moveToMenuNestedFrames() {
+        tFMovetoMenuNestedFrames.moveTo();
+    }
+    public void moveToMenuButtons() {
+        tFButtonsMenu.moveTo();
     }
 }

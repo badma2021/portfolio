@@ -1,13 +1,8 @@
 package Pages;
-
 import Elements.Button;
 import Elements.TextField;
 import Utils.ConfigReader;
-import Utils.Driver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 import java.io.IOException;
 
 public class WebTablesPage extends BaseForm {
@@ -16,9 +11,8 @@ public class WebTablesPage extends BaseForm {
     private String locatorWebTablesHeader = "//div[@class='main-header'][contains(text(),'Tables')]";
     private String locatorAddButton = "//*[@id='addNewRecordButton']";
     private String locatorUserForDelete="//*[@id='delete-record-4']";
-    private String locatorButtonsMenu = "//*[@id='item-4']/span[contains(text(),'Buttons')]";
     private String locatorUserAdded = "//div[@class='rt-tr-group'][" + ConfigReader.util().getString("user_number") + "]";
-    private String locatorAlertsHeader = "//div[@class='main-header'][contains(text(),'Alerts')]";
+
 
     public WebTablesPage() throws IOException {
 
@@ -26,12 +20,11 @@ public class WebTablesPage extends BaseForm {
     }
 
     private RegistrationForm rf = new RegistrationForm();
-    Actions builder = new Actions(Driver.getInstance());
     private TextField tFWebTablesPage = new TextField(By.xpath(locatorWebTablesHeader), "Main header of Web Tables page");
     private Button btAdd = new Button(By.xpath(locatorAddButton), "Add");
     private TextField tableAdd = new TextField(By.xpath(locatorUserAdded), "New User row in the table");
-    private TextField tfRemoveUser = new TextField(By.xpath(locatorUserForDelete), "Basket sign for removing any user in the table");
-
+    private TextField tfRemoveUser = new TextField(By.xpath(locatorUserForDelete), "Basket sign for 4th user in the table");
+    private MenuForm mf = new MenuForm();
 
 
     public boolean appearTextFieldWebTablesPage() {
@@ -41,14 +34,10 @@ public class WebTablesPage extends BaseForm {
 
     public void clickAddButton() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorAddButton));
-        builder.moveToElement(element).build().perform();
+        btAdd.moveTo();
         btAdd.click();
     }
 
-    public boolean appearTextFieldRegistrationFormOnWebTablesPage() throws IOException {
-        return rf.appearTextFieldRegistrationForm();
-    }
 
     public String getRowTextFromNewUser() {
         return tableAdd.cleanText();
@@ -57,8 +46,7 @@ public class WebTablesPage extends BaseForm {
 
     public void clickRemoveUserButton() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorButtonsMenu));
-        builder.moveToElement(element).build().perform();
+        mf.moveToMenuButtons();
         tfRemoveUser.click();
     }
     public boolean appearTextFieldAddedUser() {

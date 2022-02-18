@@ -16,7 +16,7 @@ public abstract class BaseElement {
 
     }
 
-    boolean isDisplayed() {
+    public boolean isDisplayed() {
         return Driver.getInstance().findElement(element).isDisplayed();
     }
 

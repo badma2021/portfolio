@@ -20,12 +20,6 @@ public class BrowserWindows extends BaseForm {
     private Button btNewTab = new Button(By.xpath(locatorNewTabButton), "New Button");
     private TextField tfSamplePageHeader = new TextField(By.xpath(locatorSamplePage), "Sample page tab header");
 
-
-    public boolean appearTfBrowserWindowsPage()  {
-        return tFBrowserWindowsPage.isDisplayed();
-
-    }
-
     public void clickNewTabButton() {
 
         btNewTab.moveTo();

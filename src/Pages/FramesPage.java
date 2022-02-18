@@ -19,27 +19,26 @@ public class FramesPage extends BaseForm {
 
     public FramesPage() {
 
-        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"),"Main header of Frames page"), "Frames page");
+        super(new TextField(By.xpath("//div[@class='main-header'][contains(text(),'Frames')]"), "Main header of Frames page"), "Frames page");
     }
+
     private MenuForm mf = new MenuForm();
-    Actions builder = new Actions(Driver.getInstance());
     private TextField tFFramesPage = new TextField(By.xpath(locatorFramesHeader), "Main header of Frames page");
     private TextField ifIframe1TextFieldText = new TextField(By.xpath(locatorIframe1TextFieldText), "1st Iframe internal text in Frames page");
 
 
-    public boolean appearTextFieldFramesPage(){
+    public boolean appearTextFieldFramesPage() {
         return tFFramesPage.isDisplayed();
 
     }
 
     public String getIframeText1FramesPage() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMovetoMenuAlerts()));
-        builder.moveToElement(element).build().perform();
+        mf.moveToMenuNestedFrames();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe1TextField)));
         Driver.getInstance().switchTo().frame(webIframe);
         String p = ifIframe1TextFieldText.getText();
-        System.out.println(p);
+
         Driver.getInstance().switchTo().defaultContent();
 
         return p;
@@ -49,12 +48,11 @@ public class FramesPage extends BaseForm {
 
     public String getIframeText2FramesPage() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(mf.getLocatorMovetoMenuAlerts()));
-        builder.moveToElement(element).build().perform();
+        mf.moveToMenuNestedFrames();
         WebElement webIframe = WaitUtils.getInstance().until(presenceOfElementLocated(By.xpath(locatorIframe2TextField)));
         Driver.getInstance().switchTo().frame(webIframe);
         String c = ifIframe1TextFieldText.getText();
-        System.out.println(c);
+
         Driver.getInstance().switchTo().defaultContent();
 
         return c;

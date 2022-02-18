@@ -7,8 +7,6 @@ import org.json.JSONObject;
 
 public class ConfigReader {
 
-    public JSONObject js;
-
     public static JSONObject util() throws IOException {
         String propertyFilePath = "configs/Config.json";
         try (

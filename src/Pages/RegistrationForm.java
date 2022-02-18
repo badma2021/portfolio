@@ -24,7 +24,7 @@ public class RegistrationForm extends BaseForm {
 
         super(new TextField(By.xpath("//*[@id='registration-form-modal']"), "Textfield Registration Form"), "Registration Form");
     }
-    Actions builder = new Actions(Driver.getInstance());
+
     private TextField tFRegistrationForm = new TextField(By.xpath(locatorRegistrationFormHeader), "Textfield Registration Form");
     private TextField tFInputFirstName = new TextField(By.xpath(locatorInputFirstName), "Textfield First name input");
     private TextField tFInputLastName = new TextField(By.xpath(locatorInputLastName), "Textfield Last name input");
@@ -34,10 +34,6 @@ public class RegistrationForm extends BaseForm {
     private TextField tFInputDepartment = new TextField(By.xpath(locatorInputDepartment), "Textfield Department input");
     private TextField btSubmit = new TextField(By.xpath(locatorSubmitButton), "Submit button");
 
-    public boolean appearTextFieldRegistrationForm() throws IOException {
-        return tFRegistrationForm.isDisplayed();
-
-    }
     public void getFInputFirstName(String key){
          tFInputFirstName.sendText(key);
     }
@@ -60,8 +56,7 @@ public class RegistrationForm extends BaseForm {
 
     public void clickSubmitButton() {
 
-        WebElement element = Driver.getInstance().findElement(By.xpath(locatorSubmitButton));
-        builder.moveToElement(element).build().perform();
+        btSubmit.moveTo();
         btSubmit.click();
     }
 }

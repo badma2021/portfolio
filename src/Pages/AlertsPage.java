@@ -49,10 +49,7 @@ public class AlertsPage extends BaseForm {
 
     }
 
-    public boolean appearTextFieldAlertsPage() {
-        return tFAlertsPage.isDisplayed();
 
-    }
 
     public void clickToSeeAlertButton() {
 
