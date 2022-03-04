@@ -1,5 +1,6 @@
 {
-  "base_Url": "https://demoqa.com/",
+  "homepage_url": "https://store.steampowered.com/",
+  "about_url": "https://store.steampowered.com/about/",
   "timeout": "15",
   "mode": "incognito",
   "Firefox": "Firefox",
