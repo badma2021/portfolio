@@ -10,17 +10,6 @@ public class TextField extends BaseElement {
 
     }
 
-    @Override
-    public void click() {
-        super.click();
-    }
-
-
-    @Override
-    public String getText() {
-        return super.getText();
-    }
-
     public void sendText(String s) {
         Driver.getInstance().findElement(element).sendKeys(s);
 

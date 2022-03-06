@@ -24,7 +24,6 @@ public class Driver {
         return driver;
     }
 
-
     public static void quitDriver() {
 
         driver.quit();

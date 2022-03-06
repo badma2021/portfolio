@@ -11,7 +11,6 @@ public abstract class BaseElement {
     public BaseElement(By element, String name) {
         this.element = element;
         this.name = name;
-
     }
 
     public boolean isDisplayed() {
