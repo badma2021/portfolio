@@ -23,9 +23,9 @@ public class BaseTest {
 
     }
 
-    @AfterTest
-    public void teardown() {
-        LoggerTest.log(Level.INFO, "AfterTest=>teardown() is acting with closing of Driver");
-        Util.quitDriver();
-    }
+//    @AfterTest
+//    public void teardown() {
+//        LoggerTest.log(Level.INFO, "AfterTest=>teardown() is acting with closing of Driver");
+//        Util.quitDriver();
+//    }
 }

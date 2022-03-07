@@ -2,6 +2,7 @@ package pages;
 
 import elements.BaseElement;
 import elements.TextField;
+import org.apache.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import util.*;
@@ -21,10 +22,16 @@ public class TopSellersPage extends BaseForm {
     private final String topGameName = "//div[@id='search_result_container']//a[1]//span";
     private final String cooperativeLANchecked = "//div[@data-param='category3' and @data-value='48' and contains(@class,'checked')]";
     private final String locatorSearchActionInput = "//input[@type='text' and @id='TagSuggest']";
-    private final String firstGenre = "//*[@id='TagFilter_Container']/div[1]/span[1]";
+    private final String firstGenre = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
     private final String actionCheckbox = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
+    //div[@data-param='tags' and @data-value='19']//following::*[3]
+    //*[@data-loc='Action']//span[contains(@class,'checkbox')]"
     private final String filterTag = "//a/div[contains(@class, 'responsive_search')]";
-    private final String tsNumberOfGames = "//div[@class='search_results_count']";
+    private final String numberOfGames = "//div[@class='search_results_count']";
+    private final String topGameNameSearch = "//div[@id='search_result_container']//a[1]//span";
+    private final String topGameRelease = "//div[@id='search_result_container']//a/div[2]/div[2]";
+    private final String topGamePrice = "//div[@id='search_result_container']//a[2]//preceding::*[4]";
+    //*[@id="search_resultsRows"]/a[1]/div[2]/div[4]/div[2]
 
     public TopSellersPage() {
         super(new TextField(By.xpath("//div[@class='range_display']"), "Any price"), "Top Sellers page");
@@ -39,9 +46,12 @@ public class TopSellersPage extends BaseForm {
     private TextField textFieldCooperativeLANchecked = new TextField(By.xpath(lANCheckbox), "LAN Co-op checkbox checked");
     private TextField textFieldInputSearchAction = new TextField(By.xpath(locatorSearchActionInput), "search for more Tags");
     private TextField textFieldActionCheckbox = new TextField(By.xpath(actionCheckbox), "Action");
-    private TextField textFieldtsNumberOfGames=new TextField(By.xpath(tsNumberOfGames), "Action");
-    private TextField textFieldFilterTag=new TextField(By.xpath(filterTag), "Filter Tag for counting of number of games");
-
+    private TextField textFieldNumberOfGames = new TextField(By.xpath(numberOfGames), "Action");
+    private TextField textFieldFilterTag = new TextField(By.xpath(filterTag), "Filter Tag for counting of number of games");
+    private TextField textFieldTopGameNameSearch = new TextField(By.xpath(topGameNameSearch), "Top game name");
+    private TextField textFieldTopGameRelease = new TextField(By.xpath(topGameRelease), "Top game release");
+    private TextField textFieldTopGamePrice = new TextField(By.xpath(topGamePrice), "Top game price");
+    private TextField textFieldTopGameName = new TextField(By.xpath(topGameName), "Top game price");
 
     public void clickTopSellers() {
         m.clickTextFieldTopSellers();
@@ -76,25 +86,47 @@ public class TopSellersPage extends BaseForm {
         return textFieldCooperativeLANchecked.isDisplayed();
     }
 
-    public void sendKeysTsSearchActionInput() {
+    public void sendKeysSearchActionInput() {
         WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
         textFieldInputSearchAction.sendText(SupportingReader.test().getString("findActionTag"));
     }
 
     public void clickActionCheckbox() {
+        LoggerTest.log(Level.INFO, "9th test is starting, waiting for Action tag ");
         WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(firstGenre)));
+        LoggerTest.log(Level.INFO, "9th test is starting, clicking on Action checkbox ");
         textFieldActionCheckbox.click();
     }
+
     public boolean getActionCheckbox() {
         return textFieldActionCheckbox.isDisplayed();
 
     }
-    public int getTsNumberOfGames() {
+
+    public int getNumberOfGames() {
         WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
-        return Util.cleanText(textFieldtsNumberOfGames.getText());
+        return Util.cleanText(textFieldNumberOfGames.getText());
 
     }
+
     public int getNumberOfFilterGames() {
         WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
         return textFieldFilterTag.size();
-}}
+    }
+
+    public String getTopGameName() {
+        return textFieldTopGameNameSearch.getText();
+    }
+
+    public String getTopGameRelease() {
+        return textFieldTopGameRelease.getText();
+    }
+
+    public String getTopGamePrice() {
+        return textFieldTopGamePrice.getText();
+    }
+
+    public void clickTopGame() {
+        textFieldTopGameName.click();
+    }
+}
