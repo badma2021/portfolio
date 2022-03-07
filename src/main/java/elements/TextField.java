@@ -15,18 +15,13 @@ public class TextField extends BaseElement {
 
     }
 
-    public String cleanText() {
-
-        return Driver.getInstance().findElement(element).getText().replaceAll("\n|\r\n", "");
-    }
 
     public String getAttribute() {
         return Driver.getInstance().findElement(element).getAttribute("value");
     }
 
-    @Override
-    public void moveTo() {
-        super.moveTo();
-
+    public int size() {
+        return Driver.getInstance().findElements(element).size();
     }
+
 }

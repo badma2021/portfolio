@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class WaitUtils {
     private static WebDriverWait wait = null;
-    private static ConfigReader cf = new ConfigReader();
+    private static SupportingReader sr = new SupportingReader();
 
     private WaitUtils() {
     }
@@ -15,11 +15,11 @@ public class WaitUtils {
     public static WebDriverWait getInstance() {
         try {
             if (wait == null) {
-                wait = new WebDriverWait(Driver.getInstance(), Long.parseLong(cf.util().getString("timeout")));
+                wait = new WebDriverWait(Driver.getInstance(), Long.parseLong(sr.config().getString("timeout")));
 
             }
 
-        } catch (WebDriverException | IOException e) {
+        } catch (WebDriverException e) {
             e.printStackTrace();
         }
         return wait;

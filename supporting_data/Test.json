@@ -1,0 +1,21 @@
+{
+  "findActionTag": "Action",
+  "infobars1": "excludeSwitches",
+  "infobars2":"enable-automation",
+  "first_alert": "You clicked a button",
+  "second_alert": "Do you confirm action?",
+  "third_alert": "You selected Ok",
+  "forth_alert": "Please enter your name",
+  "input1": "I do not remember my password",
+  "user_number": "4",
+  "checkFrames": "Parent frame Child Iframe",
+  "new_tab_url": "https://demoqa.com/sample",
+  "new_tab": "This is a sample page",
+  "date_picker_year": "2024",
+  "date_picker_month": "February",
+  "date_picker_number": "29",
+  "expected_date":"02/29/2024",
+  "dateFormat1": "MM/dd/yyyy",
+  "dateFormat2": "MMMM dd, yyyy h:mm aa",
+  "LocaleEnglish":"en_GB"
+}

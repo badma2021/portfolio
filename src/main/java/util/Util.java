@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class Util {
 
-    public static void getDriverUrl(String key) throws IOException {
-      Driver.getInstance().get(ConfigReader.util().getString(key));
+    public static void getDriverUrl(String key) {
+      Driver.getInstance().get(SupportingReader.config().getString(key));
     }
     public static void manageDriver(){
         Driver.getInstance().manage().window().maximize();

@@ -4,18 +4,14 @@ import org.openqa.selenium.*;
 import java.io.IOException;
 
 public class Driver {
-
     private static WebDriver driver = null;
-
     private Driver() {
     }
-
     public static WebDriver getInstance() {
         try {
             if (driver == null) {
-                driver = BrowserFactory.getBrowser(ConfigReader.util().getString("Chrome"));
+                driver = BrowserFactory.getBrowser(SupportingReader.config().getString("Chrome"));
             }
-
         } catch (WebDriverException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -23,12 +19,9 @@ public class Driver {
         }
         return driver;
     }
-
     public static void quitDriver() {
-
         driver.quit();
         driver = null;
-
     }
 
 }

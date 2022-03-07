@@ -14,7 +14,7 @@ public class Menu extends BaseForm {
     }
 
     private TextField textFieldAbout = new TextField(By.xpath("//a[@class='menuitem'][contains(@href,'about')]"), "ABOUT");
-    private TextField textFieldNewNoteWorthy = new TextField(By.linkText(linkTextNewNoteworthy), "New & Noteworthy");
+    private TextField textFieldNewNoteworthy = new TextField(By.linkText(linkTextNewNoteworthy), "New & Noteworthy");
     private TextField textFieldTopSellersPopUp = new TextField(By.xpath(topSellersElementText), "Top Sellers pop-up");
 
     public void clickTextFieldAbout() {
@@ -23,7 +23,7 @@ public class Menu extends BaseForm {
 
     public void clickTextFieldTopSellers() {
         WaitUtils.getInstance().until(ExpectedConditions.elementToBeClickable(By.linkText(linkTextNewNoteworthy)));
-        textFieldNewNoteWorthy.moveTo();///сюда
+        textFieldNewNoteworthy.moveTo();
         WaitUtils.getInstance().until(ExpectedConditions.elementToBeClickable(By.linkText(linkTextNewNoteworthy)));
         textFieldTopSellersPopUp.click();
     }

@@ -2,7 +2,7 @@ package test;
 
 import org.apache.log4j.Level;
 import org.testng.annotations.*;
-import util.ConfigReader;
+import util.SupportingReader;
 import util.Driver;
 import util.LoggerTest;
 import util.Util;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class BaseTest {
 
     @BeforeTest
-    public void setup() throws IOException {
+    public void setup()  {
         LoggerTest.log(Level.INFO, "BeforeMethod=>setup() is acting with getting instance of driver");
         Util.getDriver();
         LoggerTest.log(Level.INFO, "BeforeMethod=>setup() is acting with maximizing of window");
