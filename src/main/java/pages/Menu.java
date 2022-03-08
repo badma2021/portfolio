@@ -1,8 +1,10 @@
 package pages;
 
 import elements.TextField;
+import org.apache.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import util.LoggerTest;
 import util.WaitUtils;
 
 public class Menu extends BaseForm {
@@ -22,9 +24,12 @@ public class Menu extends BaseForm {
     }
 
     public void clickTextFieldTopSellers() {
-        WaitUtils.getInstance().until(ExpectedConditions.elementToBeClickable(By.linkText(linkTextNewNoteworthy)));
+//
+        LoggerTest.log(Level.INFO, "6th test is starting: getting of price of game moveto ");
         textFieldNewNoteworthy.moveTo();
+        LoggerTest.log(Level.INFO, "6th test is starting: getting of price of game wait2 ");
         WaitUtils.getInstance().until(ExpectedConditions.elementToBeClickable(By.linkText(linkTextNewNoteworthy)));
+        LoggerTest.log(Level.INFO, "6th test is starting: getting of price of game click ");
         textFieldTopSellersPopUp.click();
     }
 }

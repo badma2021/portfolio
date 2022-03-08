@@ -9,7 +9,7 @@ public class Driver {
     public static WebDriver getInstance() {
         try {
             if (driver == null) {
-                driver = BrowserFactory.getBrowser(SupportingReader.config().getString("browser"));
+                driver = BrowserFactory.getBrowser(SupportingReader.config("config").getString("browser"));
             }
         } catch (WebDriverException e) {
             e.printStackTrace();

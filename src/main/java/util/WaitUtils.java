@@ -13,7 +13,7 @@ public class WaitUtils {
     public static WebDriverWait getInstance() {
         try {
             if (wait == null) {
-                wait = new WebDriverWait(Driver.getInstance(), Long.parseLong(sr.config().getString("timeout")));
+                wait = new WebDriverWait(Driver.getInstance(), Long.parseLong(sr.config("config").getString("timeout")));
 
             }
 

@@ -3,7 +3,7 @@ package util;
 public class Util {
 
     public static void getDriverUrl(String key) {
-        Driver.getInstance().get(SupportingReader.config().getString(key));
+        Driver.getInstance().get(SupportingReader.config("config").getString(key));
     }
 
     public static void manageDriver() {

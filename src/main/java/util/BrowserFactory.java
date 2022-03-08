@@ -31,9 +31,9 @@ public class BrowserFactory {
                     if (driver == null) {
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions options = new ChromeOptions();
-                        options.addArguments(SupportingReader.config().getString("mode"));
-                        options.setExperimentalOption(SupportingReader.config().getString("infobars"), false);
-                        options.setExperimentalOption(SupportingReader.config().getString("infobars1"), Collections.singletonList(SupportingReader.config().getString("infobars2")));
+                        options.addArguments(SupportingReader.config("config").getString("mode"));
+                        options.setExperimentalOption(SupportingReader.config("config").getString("infobars"), false);
+                        options.setExperimentalOption(SupportingReader.config("config").getString("infobars1"), Collections.singletonList(SupportingReader.config("config").getString("infobars2")));
                         driver = new ChromeDriver(options);
                     }
                     break;

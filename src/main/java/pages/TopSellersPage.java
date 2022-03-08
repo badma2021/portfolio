@@ -79,13 +79,14 @@ public class TopSellersPage extends BaseForm {
 
     public void sendKeysSearchActionInput() {
         WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
-        textFieldInputSearchAction.sendText(SupportingReader.test().getString("findActionTag"));
+        textFieldInputSearchAction.sendText(SupportingReader.config("test").getString("findActionTag"));
     }
 
     public void clickActionCheckbox() {
         LoggerTest.log(Level.INFO, "9th test is starting, waiting for Action tag ");
         WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(firstGenre)));
         LoggerTest.log(Level.INFO, "9th test is starting, clicking on Action checkbox ");
+        textFieldActionCheckbox.moveTo();
         textFieldActionCheckbox.click();
     }
 

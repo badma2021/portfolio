@@ -8,27 +8,24 @@ import org.json.JSONObject;
 
 public class SupportingReader {
 
-    public static JSONObject config() {
-        String propertyFilePath = "supporting_data/Config.json";
-        StringBuilder temp = new StringBuilder();
-        try (
-                BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath))) {
-            String file;
+    public static String getProperty(String path) {
+        String propertyFilePath = null;
 
-            while ((file = reader.readLine()) != null) {
-                temp.append(file);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        switch (path) {
+            case "config":
+                propertyFilePath = "supporting_data/Config.json";
+                break;
+            case "test":
+                propertyFilePath = "supporting_data/Test.json";
+                break;
         }
-        return new JSONObject(temp.toString());
+        return propertyFilePath;
     }
 
-    public static JSONObject test()  {
-        String propertyFilePath = "supporting_data/Test.json";
+    public static JSONObject config(String data) {
         StringBuilder temp = new StringBuilder();
         try (
-                BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath))) {
+                BufferedReader reader = new BufferedReader(new FileReader(getProperty(data)))) {
             String file;
 
             while ((file = reader.readLine()) != null) {
@@ -40,6 +37,3 @@ public class SupportingReader {
         return new JSONObject(temp.toString());
     }
 }
-
-
-
