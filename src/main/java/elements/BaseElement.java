@@ -32,7 +32,7 @@ public abstract class BaseElement {
     }
 
     public void moveTo(){
-        LoggerTest.log(Level.INFO, "BaseElement method ia activating : moveTo");
+        LoggerTest.log(Level.INFO, "BaseElement method is activating : moveTo");
         ActionsBuilder.getInstance().moveToElement(Driver.getInstance().findElement(element)).build().perform();
     }
 }

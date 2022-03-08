@@ -71,7 +71,7 @@ public class Testing extends BaseTest {
         Assert.assertTrue(topGameName.equals(tg.getHubGameName()), "Verification Failed: Top game page is not open, as the name inside game's page does not match with the name in Topsellers page");
         Assert.assertTrue(topGameRelease.equals(tg.getReleaseDate2()), "Verification Failed: Top game page is not open, as the date of release inside game's page does not match with the name in Topsellers page");
         Assert.assertTrue(topGamePrice.equals(tg.getGamePrice()), "Verification Failed: Top game page is not open, as the game price inside game's page does not match with the price in Topsellers page");
-        LoggerTest.log(Level.INFO, "11th test is starting: top game name is " + tg.getHubGameName() + " date release2 is " + tg.getReleaseDate2() + " price is " + tg.getGamePrice());
+        LoggerTest.log(Level.INFO, "11th test is starting: top game name is " + tg.getHubGameName() + " with date release2 => " + tg.getReleaseDate2() + "and price => " + tg.getGamePrice());
 
     }
 
