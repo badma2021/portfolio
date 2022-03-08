@@ -10,7 +10,6 @@ public class AboutSteamPage extends BaseForm {
     private String aboutTitle = "//div[@class='about_subtitle']";
     private String inGamePlayers = "//div[contains(@class, 'gamers_in')]//parent::*";
     private String outGamePlayers = "//div[contains(@class, 'gamers_on')]//parent::*";
-    private String apShopElement = "//div[@class='supernav_container']/a[1]";
 
     public AboutSteamPage() {
         super(new TextField(By.xpath("//div[@class='about_subtitle']"), "Text under the Steam logo"), "Steam About page");

@@ -1,7 +1,6 @@
 package util;
 
 import org.openqa.selenium.*;
-import java.io.IOException;
 
 public class Driver {
     private static WebDriver driver = null;
@@ -10,11 +9,9 @@ public class Driver {
     public static WebDriver getInstance() {
         try {
             if (driver == null) {
-                driver = BrowserFactory.getBrowser(SupportingReader.config().getString("Chrome"));
+                driver = BrowserFactory.getBrowser(SupportingReader.config().getString("browser"));
             }
         } catch (WebDriverException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         return driver;

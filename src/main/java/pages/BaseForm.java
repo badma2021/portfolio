@@ -2,7 +2,6 @@ package pages;
 
 import elements.BaseElement;
 import org.apache.log4j.Level;
-import org.openqa.selenium.WebDriver;
 import util.LoggerTest;
 
 public abstract class BaseForm {

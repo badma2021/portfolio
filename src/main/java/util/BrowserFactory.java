@@ -1,52 +1,47 @@
 package util;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.Level;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import java.io.IOException;
+
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BrowserFactory {
 
-    private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
 
-    public static WebDriver getBrowser(String browserName) throws IOException {
+    public static WebDriver getBrowser(String browserName) {
         WebDriver driver = null;
 
-        switch (browserName) {
-            case "Firefox":
-                driver = drivers.get("Firefox");
-                if (driver == null) {
-                    driver = new FirefoxDriver();
-                    drivers.put("Firefox", driver);
-                }
-                break;
+        try {
+            switch (browserName) {
 
-            case "Chrome":
-                driver = drivers.get("Chrome");
-                if (driver == null) {
-                    WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments(SupportingReader.config().getString("mode"));
-                    options.setExperimentalOption(SupportingReader.config().getString("infobars"),false);
-                    options.setExperimentalOption(SupportingReader.config().getString("infobars1"), Collections.singletonList(SupportingReader.config().getString("infobars2")));
-                    driver = new ChromeDriver(options);
+                case "Firefox":
 
-                    drivers.put("Chrome", driver);
-                }
-                break;
+                    if (driver == null) {
+                        driver = new FirefoxDriver();
+                    }
+                    break;
+
+                case "Chrome":
+
+                    if (driver == null) {
+                        WebDriverManager.chromedriver().setup();
+                        ChromeOptions options = new ChromeOptions();
+                        options.addArguments(SupportingReader.config().getString("mode"));
+                        options.setExperimentalOption(SupportingReader.config().getString("infobars"), false);
+                        options.setExperimentalOption(SupportingReader.config().getString("infobars1"), Collections.singletonList(SupportingReader.config().getString("infobars2")));
+                        driver = new ChromeDriver(options);
+                    }
+                    break;
+            }
+        } catch (WebDriverException e) {
+            e.printStackTrace();
         }
+        LoggerTest.log(Level.INFO, "Getting browser from BrowserFactory: " + driver);
         return driver;
-    }
-
-    public static void closeAllDriver() {
-        for (String key : drivers.keySet()) {
-            drivers.get(key).close();
-            drivers.get(key).quit();
-        }
     }
 }

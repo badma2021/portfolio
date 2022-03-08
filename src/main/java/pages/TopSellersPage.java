@@ -1,6 +1,5 @@
 package pages;
 
-import elements.BaseElement;
 import elements.TextField;
 import org.apache.log4j.Level;
 import org.openqa.selenium.By;
@@ -8,30 +7,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import util.*;
 import util.SupportingReader;
 
-import java.io.IOException;
-
 public class TopSellersPage extends BaseForm {
 
-    private final String locatorMovetoAlertsFrameWindows = "//div[@class='card-body']/h5[contains(text(),'Alert')]";
-    private final String locatorElements = "//div[@class='card mt-4 top-card'][1]";
     private final String locatorAnyPrice = "//div[@class='range_display']";
     private final String steamOSCheckboxText = "//div[@data-param='os' and @data-value='linux']//span[contains(@class,'checkbox')]";
     private final String steamOScheckboxChecked = "//div[@data-param='os' and @data-value='linux' and contains(@class,'checked')]";
     private final String cooperativeLAN = "//div[@data-collapse-name='category3']";
     private final String lANCheckbox = "//div[@data-value='48']";
     private final String topGameName = "//div[@id='search_result_container']//a[1]//span";
-    private final String cooperativeLANchecked = "//div[@data-param='category3' and @data-value='48' and contains(@class,'checked')]";
     private final String locatorSearchActionInput = "//input[@type='text' and @id='TagSuggest']";
     private final String firstGenre = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
     private final String actionCheckbox = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
-    //div[@data-param='tags' and @data-value='19']//following::*[3]
-    //*[@data-loc='Action']//span[contains(@class,'checkbox')]"
     private final String filterTag = "//a/div[contains(@class, 'responsive_search')]";
     private final String numberOfGames = "//div[@class='search_results_count']";
     private final String topGameNameSearch = "//div[@id='search_result_container']//a[1]//span";
     private final String topGameRelease = "//div[@id='search_result_container']//a/div[2]/div[2]";
     private final String topGamePrice = "//div[@id='search_result_container']//a[2]//preceding::*[4]";
-    //*[@id="search_resultsRows"]/a[1]/div[2]/div[4]/div[2]
 
     public TopSellersPage() {
         super(new TextField(By.xpath("//div[@class='range_display']"), "Any price"), "Top Sellers page");
