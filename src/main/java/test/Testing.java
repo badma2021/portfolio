@@ -17,7 +17,7 @@ public class Testing extends BaseTest {
     private String topGameRelease;
     private String topGamePrice;
 
-    @Test(priority = 1, description = "Test1", enabled = true)//Test case 1.
+    @Test(priority = 1, description = "Test1", enabled = true)
     public void Homepage() {
         LoggerTest.log(Level.INFO, "1st test is starting, Home page is displayed:" + hp.isDisplayed()); //Шаг1
         Assert.assertTrue((hp.isDisplayed()), "Home page is not open");
@@ -74,6 +74,5 @@ public class Testing extends BaseTest {
         LoggerTest.log(Level.INFO, "11th test is starting: top game name is " + tg.getHubGameName() + " with date release2 => " + tg.getReleaseDate2() + "and price => " + tg.getGamePrice());
 
     }
-
 }
 
