@@ -14,19 +14,12 @@ public class WaitUtils {
         try {
             if (wait == null) {
                 wait = new WebDriverWait(Driver.getInstance(), Long.parseLong(sr.config("config").getString("timeout")));
-
             }
 
         } catch (WebDriverException e) {
             e.printStackTrace();
         }
         return wait;
-    }
-
-
-    public static void quitDriver() {
-        wait = null;
-
     }
 
 }

@@ -12,9 +12,7 @@ public class ActionsBuilder {
         try {
             if (builder == null) {
                 builder = new Actions(Driver.getInstance());
-
             }
-
         } catch (WebDriverException e) {
             e.printStackTrace();
         }

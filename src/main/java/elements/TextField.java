@@ -2,10 +2,8 @@ package elements;
 
 import org.apache.log4j.Level;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import util.Driver;
 import util.LoggerTest;
-import util.WaitUtils;
 
 public class TextField extends BaseElement {
 

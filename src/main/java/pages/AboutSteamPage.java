@@ -15,13 +15,13 @@ public class AboutSteamPage extends BaseForm {
         super(new TextField(By.xpath("//div[@class='about_subtitle']"), "Text under the Steam logo"), "Steam About page");
     }
 
-    private TextField textFieldAboutSteamPageLogo=new TextField(By.xpath(aboutTitle),"ABOUT subtitle");
-    private TextField textFieldInGamePlayers=new TextField(By.xpath(inGamePlayers),"ABOUT subtitle");
-    private TextField textFieldOutGamePlayers=new TextField(By.xpath(outGamePlayers),"ABOUT subtitle");
+    private TextField textFieldAboutSteamPageLogo = new TextField(By.xpath(aboutTitle), "ABOUT subtitle");
+    private TextField textFieldInGamePlayers = new TextField(By.xpath(inGamePlayers), "In game players");
+    private TextField textFieldOutGamePlayers = new TextField(By.xpath(outGamePlayers), "Out game players");
 
-    public boolean textFieldAboutSteamPageLogoDisplay(){
+    public boolean textFieldAboutSteamPageLogoDisplay() {
         LoggerTest.log(Level.INFO, "2nd test is starting: method textFieldAboutSteamPageLogoDisplay is invoked");
-       return textFieldAboutSteamPageLogo.isDisplayed();
+        return textFieldAboutSteamPageLogo.isDisplayed();
     }
 
     public int getInGamePlayers() {

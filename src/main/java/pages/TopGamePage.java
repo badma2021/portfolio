@@ -19,7 +19,7 @@ public class TopGamePage extends BaseForm {
 
     private TextField textFieldHubGameName = new TextField(By.xpath(hubGameName), "Top game name textfield");
     private TextField textFieldGamePrice = new TextField(By.xpath(gamePrice), "Game price textfield");
-    private TextField textFieldReleaseDate2 = new TextField(By.xpath(releaseDate2), "Release date2 textfield");
+    private TextField textFieldReleaseDate2 = new TextField(By.xpath(releaseDate2), "Release date textfield");
 
     public String getHubGameName() {
         return textFieldHubGameName.getText();

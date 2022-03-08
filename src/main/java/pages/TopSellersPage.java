@@ -14,11 +14,9 @@ public class TopSellersPage extends BaseForm {
     private final String steamOScheckboxChecked = "//div[@data-param='os' and @data-value='linux' and contains(@class,'checked')]";
     private final String cooperativeLAN = "//div[@data-collapse-name='category3']";
     private final String lANCheckbox = "//div[@data-value='48']";
-    private final String topGameName = "//div[@id='search_result_container']//a[1]//span";
+    private final String topGameNameWait = "//div[@id='search_result_container']//a[1]//span";
     private final String locatorSearchActionInput = "//input[@type='text' and @id='TagSuggest']";
-    private final String firstGenre = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
-    private final String actionCheckbox = "//div[@data-param='tags' and @data-value='19']//following::*[3]";
-    //*[@data-loc='Action']//span[contains(@class,'checkbox')]
+    private final String actionCheckbox = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
     private final String filterTag = "//a/div[contains(@class, 'responsive_search')]";
     private final String numberOfGames = "//div[@class='search_results_count']";
     private final String topGameNameSearch = "//div[@id='search_result_container']//a[1]//span";
@@ -32,18 +30,18 @@ public class TopSellersPage extends BaseForm {
     private Menu m = new Menu();
     private TextField textFieldAnyPrice = new TextField(By.xpath(locatorAnyPrice), "Any price");
     private TextField textFieldSteamOSCheckbox = new TextField(By.xpath(steamOSCheckboxText), "steamOS+Linux checkbox");
-    private TextField textFieldSteamOScheckboxChecked = new TextField(By.xpath(steamOScheckboxChecked), "steamOS+Linux checkbox");
-    private TextField textFieldCooperativeLAN = new TextField(By.xpath(cooperativeLAN), "steamOS+Linux checkbox");
+    private TextField textFieldSteamOScheckboxChecked = new TextField(By.xpath(steamOScheckboxChecked), "steamOS+Linux checkbox checked");
+    private TextField textFieldCooperativeLAN = new TextField(By.xpath(cooperativeLAN), "Narrow by number of players");
     private TextField textFieldlANCheckbox = new TextField(By.xpath(lANCheckbox), "LAN Co-op checkbox");
     private TextField textFieldCooperativeLANchecked = new TextField(By.xpath(lANCheckbox), "LAN Co-op checkbox checked");
     private TextField textFieldInputSearchAction = new TextField(By.xpath(locatorSearchActionInput), "search for more Tags");
-    private TextField textFieldActionCheckbox = new TextField(By.xpath(actionCheckbox), "Action");
+    private TextField textFieldActionCheckbox = new TextField(By.xpath(actionCheckbox), "Action checkbox");
     private TextField textFieldNumberOfGames = new TextField(By.xpath(numberOfGames), "Number of games");
     private TextField textFieldFilterTag = new TextField(By.xpath(filterTag), "Filter Tag for counting of number of games");
-    private TextField textFieldTopGameNameSearch = new TextField(By.xpath(topGameNameSearch), "Top game name");
+    private TextField textFieldTopGameNameSearch = new TextField(By.xpath(topGameNameSearch), "Top game name at the top of the list");
     private TextField textFieldTopGameRelease = new TextField(By.xpath(topGameRelease), "Top game release");
     private TextField textFieldTopGamePrice = new TextField(By.xpath(topGamePrice), "Top game price");
-    private TextField textFieldTopGameName = new TextField(By.xpath(topGameName), "Top game name");
+    private TextField textFieldTopGameName = new TextField(By.xpath(topGameNameWait), "Top game name textfield for wait");
 
     public void clickTopSellers() {
         m.clickTextFieldTopSellers();
@@ -70,7 +68,7 @@ public class TopSellersPage extends BaseForm {
 
     public void clickLANcheckbox() {
         textFieldlANCheckbox.moveTo();
-        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameNameWait)));
         textFieldlANCheckbox.click();
     }
 
@@ -79,7 +77,7 @@ public class TopSellersPage extends BaseForm {
     }
 
     public void sendKeysSearchActionInput() {
-        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameNameWait)));
         textFieldInputSearchAction.sendText(SupportingReader.config("test").getString("findActionTag"));
     }
 
@@ -90,7 +88,7 @@ public class TopSellersPage extends BaseForm {
         textFieldActionCheckbox.moveTo();
         textFieldAnyPrice.click();
         textFieldActionCheckbox.click();
-        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameNameWait)));
     }
 
     public boolean getActionCheckbox() {
@@ -99,13 +97,13 @@ public class TopSellersPage extends BaseForm {
     }
 
     public int getNumberOfGames() {
-        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameNameWait)));
         return Util.cleanText(textFieldNumberOfGames.getText());
 
     }
 
     public int getNumberOfFilterGames() {
-        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameNameWait)));
         return textFieldFilterTag.size();
     }
 
