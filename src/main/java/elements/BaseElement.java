@@ -21,12 +21,12 @@ public abstract class BaseElement {
     }
 
     public void click() {
-        LoggerTest.log(Level.INFO, "BaseElement method ia activating : click");
+        LoggerTest.log(Level.INFO, "BaseElement method is activating : click");
         Driver.getInstance().findElement(element).click();
     }
 
     public String getText() {
-        LoggerTest.log(Level.INFO, "BaseElement method ia activating : getText");
+        LoggerTest.log(Level.INFO, "BaseElement method is activating : getText");
 
         return Driver.getInstance().findElement(element).getText();
     }

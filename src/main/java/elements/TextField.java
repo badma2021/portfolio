@@ -2,8 +2,10 @@ package elements;
 
 import org.apache.log4j.Level;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import util.Driver;
 import util.LoggerTest;
+import util.WaitUtils;
 
 public class TextField extends BaseElement {
 
@@ -12,13 +14,14 @@ public class TextField extends BaseElement {
     }
 
     public void sendText(String s) {
-        LoggerTest.log(Level.INFO, "TextField method ia activating : sendText");
+        LoggerTest.log(Level.INFO, "TextField method is activating : sendText");
         Driver.getInstance().findElement(element).sendKeys(s);
     }
 
     public int size() {
 
-        LoggerTest.log(Level.INFO, "TextField method ia activating : size");
+        LoggerTest.log(Level.INFO, "TextField method is activating : size");
+
         return Driver.getInstance().findElements(element).size();
     }
 }

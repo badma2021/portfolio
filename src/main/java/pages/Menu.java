@@ -24,7 +24,7 @@ public class Menu extends BaseForm {
     }
 
     public void clickTextFieldTopSellers() {
-//
+        WaitUtils.getInstance().until(ExpectedConditions.elementToBeClickable(By.linkText(linkTextNewNoteworthy)));
         LoggerTest.log(Level.INFO, "6th test is starting: getting of price of game moveto ");
         textFieldNewNoteworthy.moveTo();
         LoggerTest.log(Level.INFO, "6th test is starting: getting of price of game wait2 ");

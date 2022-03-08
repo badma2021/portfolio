@@ -17,7 +17,8 @@ public class TopSellersPage extends BaseForm {
     private final String topGameName = "//div[@id='search_result_container']//a[1]//span";
     private final String locatorSearchActionInput = "//input[@type='text' and @id='TagSuggest']";
     private final String firstGenre = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
-    private final String actionCheckbox = "//*[@data-loc='Action']//span[contains(@class,'checkbox')]";
+    private final String actionCheckbox = "//div[@data-param='tags' and @data-value='19']//following::*[3]";
+    //*[@data-loc='Action']//span[contains(@class,'checkbox')]
     private final String filterTag = "//a/div[contains(@class, 'responsive_search')]";
     private final String numberOfGames = "//div[@class='search_results_count']";
     private final String topGameNameSearch = "//div[@id='search_result_container']//a[1]//span";
@@ -37,12 +38,12 @@ public class TopSellersPage extends BaseForm {
     private TextField textFieldCooperativeLANchecked = new TextField(By.xpath(lANCheckbox), "LAN Co-op checkbox checked");
     private TextField textFieldInputSearchAction = new TextField(By.xpath(locatorSearchActionInput), "search for more Tags");
     private TextField textFieldActionCheckbox = new TextField(By.xpath(actionCheckbox), "Action");
-    private TextField textFieldNumberOfGames = new TextField(By.xpath(numberOfGames), "Action");
+    private TextField textFieldNumberOfGames = new TextField(By.xpath(numberOfGames), "Number of games");
     private TextField textFieldFilterTag = new TextField(By.xpath(filterTag), "Filter Tag for counting of number of games");
     private TextField textFieldTopGameNameSearch = new TextField(By.xpath(topGameNameSearch), "Top game name");
     private TextField textFieldTopGameRelease = new TextField(By.xpath(topGameRelease), "Top game release");
     private TextField textFieldTopGamePrice = new TextField(By.xpath(topGamePrice), "Top game price");
-    private TextField textFieldTopGameName = new TextField(By.xpath(topGameName), "Top game price");
+    private TextField textFieldTopGameName = new TextField(By.xpath(topGameName), "Top game name");
 
     public void clickTopSellers() {
         m.clickTextFieldTopSellers();
@@ -84,10 +85,12 @@ public class TopSellersPage extends BaseForm {
 
     public void clickActionCheckbox() {
         LoggerTest.log(Level.INFO, "9th test is starting, waiting for Action tag ");
-        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(firstGenre)));
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(locatorAnyPrice)));
         LoggerTest.log(Level.INFO, "9th test is starting, clicking on Action checkbox ");
         textFieldActionCheckbox.moveTo();
+        textFieldAnyPrice.click();
         textFieldActionCheckbox.click();
+        WaitUtils.getInstance().until(ExpectedConditions.presenceOfElementLocated(By.xpath(topGameName)));
     }
 
     public boolean getActionCheckbox() {
